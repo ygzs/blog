@@ -15,7 +15,7 @@ margin:0 auto
 定位元素
 margin：0px auto
 
-JS 数据类型
+<h1>JS 数据类型</h1>
 一 简介
 1.  数值（number）：整数和小数（比如1和3.14）
     字符串（string）：文本（比如Hello World）
