@@ -77,9 +77,9 @@ This is my first commit.
     \r ：回车键（\u000D）
     \t ：制表符（\u0009）
     \v ：垂直制表符（\u000B）
-    \' ：单引号（\u0027）
-    \" ：双引号（\u0022）
-    \\ ：反斜杠（\u005C）
+    \\' ：单引号（\u0027）
+    \\" ：双引号（\u0022）
+    \\\ ：反斜杠（\u005C）
 
 4.  符串内部的单个字符无法改变和增删，这些操作会默认地失败
 
@@ -105,4 +105,101 @@ This is my first commit.
 7.  delete命令用于删除对象的属性
     in运算符用于检查对象是否包含某个属性
     for...in循环用来遍历一个对象的全部属性。
+
+<hr>
+
+六 类型转换
+
+1.  任意类型转数字 <br>
+    1.	Number(x)
+    2.	parseInt(x, 10) 
+    3.	parseFloat(x) 
+    4.	x - 0
+    5.	+x
+2.  任意类型转字符串 <br>
+    1.	String(x)
+    2.	x.toString()   //null,undefined 会报错
+    3.	x + ''   //1+'1'==='11'
+3.  任意类型转布尔
+    1.	Boolean(x)
+    2.	!!x
+
+七 内存图
+
+1.	Chrome 打开即占用 1G 内存
+2.	Chrome 各每个网页分配一定数量的内存
+3.	这些内存要分给页面渲染器、网络模块、浏览器外壳和 JS 引擎（V8引擎）
+4.	JS 引擎将内存分为代码区和数据区
+5.	我们只研究数据区
+6.	数据区分为 Stack（栈内存） 和 Heap（堆内存）
+7.	简单类型的数据直接存在 Stack 里
+8.	复杂类型的数据是把 Heap 地址存在 Stack 里
+    （遇到问题就画图，不要分析。）
+<br>
+
+```javascript
+var a = 1
+var b = a
+b = 2
+a   //1
+```
+
+```javascript
+var a = {name: 'a'}
+var b = a
+b = {name: 'b'}
+a.name //'a'
+```
+
+```javascript
+var a = {name: 'a'}
+var b = a
+b.name = 'b'
+a.name //'b'
+```
+```javascript
+var a = {name: 'a'}
+var b = a
+b = null
+a // {name: 'a'}
+```
+
+八 面试题
+
+```javascript
+var a={n:1};
+var b=a;
+a.x=a={n:2};//关键代码
+
+console.log(a.x);//undefined
+console.log(b.x);//[object Object]
+```
+
+九 垃圾回收
+
+如果一个对象没有被引用，特就是垃圾，将会被回收。<br>
+1.  
+```javascript
+var a = 1
+var b = a
+b = 2 //这个时候改变 b,a 完全不受 b 的影响
+```
+那么我们就说这是一个深复制,对于简单类型的数据来说，赋值就是深拷贝。对于复杂类型的数据（对象）来说，才要区分浅拷贝和深拷贝。
+
+2.  这是一个浅拷贝的例子
+```javascript
+var a = {name: 'frank'}
+var b = a
+b.name = 'b'
+a.name === 'b' // true,因为我们对 b 操作后，a 也变了
+```
+3.  什么是深拷贝了，就是对 Heap 内存进行完全的拷贝。
+```javascript
+var a = {name: 'frank'}
+var b = deepClone(a) // deepClone 没有学
+b.name = 'b'
+a.name === 'a' // true
+```
+
+
 
