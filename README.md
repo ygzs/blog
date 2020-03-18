@@ -201,5 +201,57 @@ b.name = 'b'
 a.name === 'a' // true
 ```
 
+十 全局对象
+
+ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象。window里面有很多属性，都是全局变量，分为两类：
+1.  ECMAScript 规定的，
+	global.parseInt
+    global.parseFloat
+	global.Number
+	global.String•
+    global.Boolean
+	global.Object
+2.	一种是浏览器自己加的属性
+	window.alert
+	window.prompt
+	window.comfirm
+	window.console.log
+	window.console.dir
+	window.document
+	window.document.createElement
+	window.document.getElementById
+
+十一 全局函数
+
+Number()    <br>
+```javascript
+var n1 = 1   //内存中就是1
+var n2 = new Number(1)   //创建了一个对象，包含了一些函数
+n1.tostring() // 把n1临时转换成一个对象
+```
+String()    Boolean()   Object()    同上，其中
+```javascript
+var n1 = {}   
+var n2 = new object()
+// n1 n2没有区别   但是
+n1 ===n2  //false
+```
+
+十二 公用属性
+
+见图一
+
+十三 公式
+
+```
+var 对象 = new 函数()
+对象.__proto__ === 函数.prototype
+
+函数.prototype.__proto__ === object.prototype
+函数.__proto__ === function.prototype
+function.__proto__ === function.prototype
+function.prototype.__proto__ === object.prototype
+```
+
 
 
