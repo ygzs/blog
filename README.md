@@ -264,25 +264,27 @@ arr.length = 0;
 arr   // []    清空一个数组
 ```
 设置length大于当前元素个数，则数组的成员数量会增加到这个值，新增的位置都是空位。读取新增的位置都会返回undefined。
-4.  
-```javascript
-var a = [];
-a['p'] = 'abc';
-a.length // 0
-a[2.1] = 'abc';
-a.length // 0
-```
+
+4.  ```javascript
+    var a = [];
+    a['p'] = 'abc';
+    a.length // 0
+    a[2.1] = 'abc';
+    a.length // 0
+    ```
 上面代码将数组的键分别设为字符串和小数，结果都不影响length属性
-4.  in检查某个键名是否存在，for...in循环遍历数组（不仅会遍历数组所有的数字键，还会遍历非数字键。）
-5.  当数组的某个位置是空元素，即两个逗号之间没有任何值，我们称该数组存在空位，数组的空位不影响length属性。数组的空位是可以读取的，返回undefined。数组的空位是可以读取的，返回undefined。使用数组的forEach方法、for...in结构、以及Object.keys方法进行遍历，空位都会被跳过，undefined不会
-6.  
-```javascript
-var obj = {
-  0: 'a',
-  1: 'b',
-  2: 'c',
-  length: 3}
-```
+
+5.  in检查某个键名是否存在，for...in循环遍历数组（不仅会遍历数组所有的数字键，还会遍历非数字键。）
+
+6.  当数组的某个位置是空元素，即两个逗号之间没有任何值，我们称该数组存在空位，数组的空位不影响length属性。数组的空位是可以读取的，返回undefined。数组的空位是可以读取的，返回undefined。使用数组的forEach方法、for...in结构、以及Object.keys方法进行遍历，空位都会被跳过，undefined不会
+
+7.  ```javascript
+    var obj = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3}
+    ```
 只要有length属性，就可以认为这个对象类似于数组，但是length属性不是动态值
 ```javascript
 var arr = Array.prototype.slice.call(arrayLike);
