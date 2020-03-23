@@ -204,22 +204,22 @@ a.name === 'a' // true
 十 全局对象
 
 ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象。window里面有很多属性，都是全局变量，分为两类：
-1.  ECMAScript 规定的，
-	global.parseInt
-    global.parseFloat
-	global.Number
-	global.String•
-    global.Boolean
-	global.Object
-2.	一种是浏览器自己加的属性
-	window.alert
-	window.prompt
-	window.comfirm
-	window.console.log
-	window.console.dir
-	window.document
-	window.document.createElement
-	window.document.getElementById
+1.  ECMAScript 规定的，     </br>
+	global.parseInt     </br>
+    global.parseFloat     </br>
+	global.Number     </br>
+	global.String     </br>
+    global.Boolean     </br>
+	global.Object     </br>
+2.	一种是浏览器自己加的属性     </br>
+	window.alert     </br>
+	window.prompt     </br>
+	window.comfirm     </br>
+	window.console.log     </br>
+	window.console.dir     </br>
+	window.document     </br>
+	window.document.createElement     </br>
+	window.document.getElementById     </br>
 
 十一 全局函数
 
@@ -253,5 +253,38 @@ function.__proto__ === function.prototype
 function.prototype.__proto__ === object.prototype
 ```
 
+十四 数组
 
-
+1.  任何类型的数据，都可以放入数组。
+2.  用数值和字符串作为键名，结果都能读取数组，原因是数值键名被自动转为了字符串。这点在赋值时也成立，一个值总是先转成字符串，再作为键名进行赋值。
+3.  length属性是一个动态的值，等于键名中的最大整数加1。length属性是可写的。设置一个小于当前成员个数的值，该数组的成员会自动减少到length设置的值。
+```javascript
+var arr = [ 'a', 'b', 'c' ];
+arr.length = 0;
+arr   // []    清空一个数组
+```
+设置length大于当前元素个数，则数组的成员数量会增加到这个值，新增的位置都是空位。读取新增的位置都会返回undefined。
+4.  
+```javascript
+var a = [];
+a['p'] = 'abc';
+a.length // 0
+a[2.1] = 'abc';
+a.length // 0
+```
+上面代码将数组的键分别设为字符串和小数，结果都不影响length属性
+4.  in检查某个键名是否存在，for...in循环遍历数组（不仅会遍历数组所有的数字键，还会遍历非数字键。）
+5.  当数组的某个位置是空元素，即两个逗号之间没有任何值，我们称该数组存在空位，数组的空位不影响length属性。数组的空位是可以读取的，返回undefined。数组的空位是可以读取的，返回undefined。使用数组的forEach方法、for...in结构、以及Object.keys方法进行遍历，空位都会被跳过，undefined不会
+6.  
+```javascript
+var obj = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+  length: 3}
+```
+只要有length属性，就可以认为这个对象类似于数组，但是length属性不是动态值
+```javascript
+var arr = Array.prototype.slice.call(arrayLike);
+```
+数组的slice方法可以将“类似数组的对象”变成真正的数组。
