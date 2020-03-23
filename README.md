@@ -290,3 +290,93 @@ arr   // []    清空一个数组
 var arr = Array.prototype.slice.call(arrayLike);
 ```
 数组的slice方法可以将“类似数组的对象”变成真正的数组。
+
+十五 Array 对象
+
+1.  ```javascript
+    var a = new Array(2)
+    //等同于
+    var a = Array(2)
+
+    var a = array(1,2,3)   //[1,2,3]
+    ```
+Array作为构造函数，行为很不一致.推荐 var arr = [1, 2];
+
+2.  join()方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。不改变原数组
+```javascript
+var a = [1, 2, 3, 4];
+
+a.join(' ')     // '1 2 3 4'
+a.join(' | ')   // "1 | 2 | 3 | 4"
+a.join()    // "1,2,3,4"
+```
+如果数组成员是undefined或null或空位，会被转成空字符串。
+
+3.  concat方法用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部，然后返回一个新数组，原数组不变。
+```javascript
+['hello'].concat(['world'], ['!'])      // ["hello", "world", "!"]
+[1, 2, 3].concat(4, 5, 6)       // [1, 2, 3, 4, 5, 6]
+
+var obj = { a: 1 };
+var oldArray = [obj];
+var newArray = oldArray.concat();
+obj.a = 2;
+newArray[0].a       // 2
+
+//原数组包含一个对象，concat方法生成的新数组包含这个对象的引用。所以，改变原对象以后，新数组跟着改变。
+```
+
+4.  sort方法对数组成员进行排序，默认是按照字典顺序排序。排序后，原数组将被改变。
+```javascript
+['d', 'c', 'b', 'a'].sort()     // ['a', 'b', 'c', 'd']
+[11, 101].sort()        // [101, 11]
+```
+如果想让sort方法按照自定义方式排序，可以传入一个函数作为参数。
+```javascript
+[10111, 1101, 111].sort(function (a, b) {
+  return a - b;
+})      // [111, 1101, 10111]
+
+//如果该函数的返回值大于0，表示第一个成员排在第二个成员后面；其他情况下，都是第一个元素排在第二个元素前面。
+```
+
+5.  map方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。
+```javascript
+var numbers = [1, 2, 3];
+numbers.map(function (n) {
+  return n + 1;
+});     // [2, 3, 4]
+
+numbers     // [1, 2, 3]  原数组不变
+```
+如果数组有空位，map方法的回调函数在这个位置不会执行，会跳过数组的空位。
+
+6. forEach与map方法很想，但是不返回值，只用来操作数据
+```javascript
+function log(element, index, array) {
+  console.log('[' + index + '] = ' + element);
+}
+
+[2, 5, 9].forEach(log);     // [0] = 2  [1] = 5 [2] = 9
+```
+
+7. filter方法用于过滤数组成员，满足条件的成员组成一个新数组返回。它的参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组。
+```javascript
+[1, 2, 3, 4, 5].filter(function (elem) {
+  return (elem > 3);
+})      // [4, 5]
+```
+
+8. reduce方法和reduceRight方法依次处理数组的每个成员，最终累计为一个值。它们的差别是，reduce是从左到右处理（从第一个成员到最后一个成员），reduceRight则是从右到左（从最后一个成员到第一个成员），其他完全一样。
+```javascript
+[1, 2, 3, 4, 5].reduce(function (a, b) {
+    console.log(a, b);  //  a为累积变量，默认为数组的第一个成员
+    return a + b;       //   b为当前变量，默认为数组的第二个成员
+})      // 1 2      3 3     6 4     10 5    最后结果：15
+```
+```javascript
+[1, 2, 3, 4, 5].reduce(function (a, b) {
+  return a + b;
+}, 10);
+// 25  从指定值相加
+```
