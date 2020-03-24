@@ -283,9 +283,9 @@ arr   // []    清空一个数组
     0: 'a',
     1: 'b',
     2: 'c',
-    length: 3}
+    length: 3 //不是动态值}
     ```
-只要有length属性，就可以认为这个对象类似于数组，但是length属性不是动态值
+伪数组就是原型链(_proto_)中没有Array.prototype
 ```javascript
 var arr = Array.prototype.slice.call(arrayLike);
 ```
@@ -380,3 +380,77 @@ function log(element, index, array) {
 }, 10);
 // 25  从指定值相加
 ```
+
+十六 函数
+
+1.  函数的声明方式      </br>
+```javascript
+function f(x,y){
+	return x+y
+}
+f.name      // 'f'
+//具名函数
+```
+```javascript
+var f = function(x,y){
+	return x+y
+}
+f.name      // 'f'
+//匿名函数
+```
+```javascript
+var f = function f2(x,y){ return x+y }
+	f.name // 'f2'
+console.log(f2) // undefined
+//具名函数赋值
+```
+```javascript
+var f = new Function('x','y','return x+y')
+	f.name // "anonymous"
+// new Function
+```
+```javascript
+var f = (x,y) => {
+	return x+y
+}
+//箭头函数
+```
+
+2.  f.call(asThis, input1,input2)
+其中 asThis 会被当做 this（通常是undefined），[input1,input2] 会被当做 arguments
+
+3.  调用栈(call stack)：调用栈的主要功能是保存调用的返回地址。每次函数执行完，返回到当前调用函数的位置执行下面的代码
+
+4.  按照语法树，就近原则（只看声明语句）        </br>
+我们只能确定变量是哪个变量，但是不能确定变量的值          </br>
+它的作用域与变量一样，就是其声明时所在的作用域，与其运行时所在的作用域无关。    </br>
+a=3,并不是在声明全局变量。如果在其父作用域中有声明a，那么仅仅是赋值。如果都没有就是声明加赋值
+```javascript
+var a = 1
+function f1(){
+    alert(a)    //变量提升，a是undefined
+    var a = 2
+}
+f1.call()
+```
+```javascript
+var a = 1
+function f1(){
+    var a = 2
+    f2.call()
+}
+function f2(){
+    console.log(a)  // a=1
+}
+f1.call()
+```
+```javascript
+var liTags = document.querySelectorAll('li')
+for(var i = 0; i<liTags.length; i++){
+    liTags[i].onclick = function(){
+        console.log(i) // 点击第3个 li 时，打印出6（此时for循环执行完毕）
+    }
+}
+```
+
+5.  如果一个函数使用了特作用域外的变量，那么（这个函数+这个变量）就叫做闭包
