@@ -454,3 +454,26 @@ for(var i = 0; i<liTags.length; i++){
 ```
 
 5.  如果一个函数使用了特作用域外的变量，那么（这个函数+这个变量）就叫做闭包
+
+十七 DOM API
+
+1.  文档对象模型 (DOM) 是HTML和XML文档的编程接口。它给文档（结构树）提供了一个结构化的表述并且定义了一种方式—程序可以对结构树进行访问，以改变文档的结构，样式和内容。
+
+2.  DOM 提供了一种表述形式将文档作为一个结构化的节点组以及包含属性和方法的对象。从本质上说，它将web 页面和脚本或编程语言连接起来了。（图）
+
+3.  innerText 和 textContent 区别：        </br>
+textContent 会获取所有元素的内容，包括 script 和 style 元素，然而 innerText 只展示给人看的元素        </br>
+textContent 会返回节点中的每一个元素。相反，innerText 受 CSS 样式的影响，并且不会返回隐藏元素的文本       </br>
+nextSibling,previousSibling 可能会获取到文本（回车）        </br>
+nodeType的值：1表示元素；3表示文本          </br>
+node.cloneNode(deep)  : deep是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.
+
+4.  document.location : 属性返回一个只读对象，提供了当前文档的URL信息 </br>
+Document.referrer : 返回跳转或打开到当前页面的页面的 URI。如果用户直接打开了这个页面（不是通过页面跳转，而是通过地址栏或者书签等打开的），则该属性为空字符串   </br>
+
+5.  getAttribute()  用于获取元素的attribute(属性)值      </br>
+innerText是一个可写属性，返回元素内包含的文本内容，在多层次的时候会按照元素由浅到深的顺序拼接其内容      </br>
+innerHTML属性作用和innerText类似，但是不是返回元素的文本内容，而是返回元素的HTML结构，在写入的时候也会自动构建DOM            </br>
+
+
+
