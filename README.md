@@ -25,44 +25,43 @@ This is my first commit.
 
 二 数据
 
-1.  所有数字都是以64位浮点数形式存储的
-
-    第1位：符号位，0表示正数，1表示负数
-    第2位到第12位（共11位）：指数部分
-    第13位到第64位（共52位）：小数部分（即有效数字）
+1.  所有数字都是以64位浮点数形式存储的          </br>
+    第1位：符号位，0表示正数，1表示负数     </br>
+    第2位到第12位（共11位）：指数部分       </br>
+    第13位到第64位（共52位）：小数部分（即有效数字）        </br>
     （如果指数部分的值在0到2047之间（不含两个端点），那么有效数字的第一位默认总是1，不保存在64位浮点数之中。）
 
 2.  数值范围
-    数值范围为21024到2-1023（开区间）
+    数值范围为21024到2-1023（开区间） </br>
     如果一个数大于等于2的1024次方，这时就会返回Infinity。
     如果一个数小于等于2的-1075次方，这时会直接返回0。
 
 3.  进制
-    八进制：有前缀0o或0O的数值，或者有前导0。
-    十六进制：有前缀0x或0X的数值。
-    二进制：有前缀0b或0B的数值。
+    八进制：有前缀0o或0O的数值，或者有前导0。       </br>
+    十六进制：有前缀0x或0X的数值。      </br>
+    二进制：有前缀0b或0B的数值。        </br>
 
 4.  特殊数值
-    NAN 表示“非数字”（Not a Number）,主要出现在将字符串解析成数字出错的场合。
+    NAN 表示“非数字”（Not a Number）,主要出现在将字符串解析成数字出错的场合。</br>
     Infinity表示“无穷”
 
 5.  用法
-    parseInt 方法用于将字符串转为整数。
-    parseFloat方法用于将一个字符串转为浮点数。
-    isNaN方法可以用来判断一个值是否为NaN。
-    isFinite方法返回一个布尔值，表示某个值是否为正常的数值。
+    parseInt 方法用于将字符串转为整数。  </br>
+    parseFloat方法用于将一个字符串转为浮点数。      </br>
+    isNaN方法可以用来判断一个值是否为NaN。      </br>
+    isFinite方法返回一个布尔值，表示某个值是否为正常的数值。        </br>
 
 三 null, undefined，boolean
 
-1.  null是一个表示“空”的对象，转为数值时为0；
-    undefined是一个表示"此处无定义"的原始值， 转为数值时为NaN。    
-    变量没有值--undefined
-    有一个object没有给值--null
-    有一个非对象没有给值--nudefined
+1.  null是一个表示“空”的对象，转为数值时为0；       </br>
+    undefined是一个表示"此处无定义"的原始值， 转为数值时为NaN。     </br> 
+    变量没有值--undefined       </br>
+    有一个object没有给值--null      </br>
+    有一个非对象没有给值--nudefined     </br>
 
-2.  “真”用关键字true表示，“假”用关键字false表示。
-    undefined  null  false  0  NaN  ""或''（空字符串）会被视为false
-    空数组（[]）和空对象（{}）对应的布尔值，都是true。
+2.  “真”用关键字true表示，“假”用关键字false表示。  </br>
+    undefined  null  false  0  NaN  ""或''（空字符串）会被视为false     </br>
+    空数组（[]）和空对象（{}）对应的布尔值，都是true。      </br>
 
 四 字符串
 
@@ -70,16 +69,16 @@ This is my first commit.
 
 2.  （+）可以连接多个单行字符串
 
-3.  \0 ：null（\u0000）
-    \b ：后退键（\u0008）
-    \f ：换页符（\u000C）
-    \n ：换行符（\u000A）
-    \r ：回车键（\u000D）
-    \t ：制表符（\u0009）
-    \v ：垂直制表符（\u000B）
-    \\' ：单引号（\u0027）
-    \\" ：双引号（\u0022）
-    \\\ ：反斜杠（\u005C）
+3.  \0 ：null（\u0000）         </br>
+    \b ：后退键（\u0008）       </br>
+    \f ：换页符（\u000C）       </br>
+    \n ：换行符（\u000A）       </br>
+    \r ：回车键（\u000D）       </br>
+    \t ：制表符（\u0009）       </br>
+    \v ：垂直制表符（\u000B）       </br>
+    \\' ：单引号（\u0027）      </br>
+    \\" ：双引号（\u0022）      </br>
+    \\\ ：反斜杠（\u005C）      </br>
 
 4.  符串内部的单个字符无法改变和增删，这些操作会默认地失败
 
@@ -97,14 +96,21 @@ This is my first commit.
 
 5.  如果不同的变量名指向同一个对象，修改其中一个变量，会影响到其他所有变量。如果取消某一个变量对于原对象的引用，不会影响到另一个变量。（这种引用只局限于对象，不适用于原始类型）
 
-6.  可以使用点运算符，方括号运算符引用对象。
-    如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。
-    数字键可以不加引号，因为会自动转成字符串。
-    数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。
+6.  可以使用点运算符，方括号运算符引用对象。   </br>
+    如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。  </br>
+    数字键可以不加引号，因为会自动转成字符串。   </br>
+    数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。  </br>
     
 7.  delete命令用于删除对象的属性
     in运算符用于检查对象是否包含某个属性
     for...in循环用来遍历一个对象的全部属性。
+```javascript
+var classes = {'a':true,'b':false,'c':true}
+	for(var key in classes){
+		var value = classes[key]//不能使用 . 会被当成classes中的属性，返回undefined
+		console.log(value)
+	}
+```
 
 <hr>
 
@@ -475,5 +481,30 @@ Document.referrer : 返回跳转或打开到当前页面的页面的 URI。如�
 innerText是一个可写属性，返回元素内包含的文本内容，在多层次的时候会按照元素由浅到深的顺序拼接其内容      </br>
 innerHTML属性作用和innerText类似，但是不是返回元素的文本内容，而是返回元素的HTML结构，在写入的时候也会自动构建DOM            </br>
 
+十八 jquery 1
 
+1.  封装                    </br>
+```javascript
+//查找一个节点的兄弟节点
+function xxx(node){
+	var brothers = node.parentNode.children
+	var array = {length:0}
+	for(var i=0;i<brothers.length;i++){
+ 		if(brothers[i] !== node){
+    	    array[array.length] = brothers[i] 
+    	    array.length += 1
+  		}
+	}
+	return array
+}
+
+//给一个节点添加class
+function xx(node，classes){
+	for(var key in classes){
+		var value = classes[key]
+        var method = value ? 'add' : 'remove'
+        node.classList[method](key)
+	}
+}
+```
 
