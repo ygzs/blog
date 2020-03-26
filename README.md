@@ -486,7 +486,7 @@ innerHTML属性作用和innerText类似，但是不是返回元素的文本内�
 1.  封装                    </br>
 ```javascript
 //查找一个节点的兄弟节点
-function xxx(node){
+function getsiblings(node){
 	var brothers = node.parentNode.children
 	var array = {length:0}
 	for(var i=0;i<brothers.length;i++){
@@ -499,7 +499,7 @@ function xxx(node){
 }
 
 //给一个节点添加class
-function xx(node，classes){
+function addclass(node，classes){
 	for(var key in classes){
 		var value = classes[key]
         var method = value ? 'add' : 'remove'
@@ -508,3 +508,59 @@ function xx(node，classes){
 }
 ```
 
+2.  命名空间   </br>
+```javascript
+dom(){}
+dom.getsiblings =  getsiblings
+dom.addclass = addclass
+
+dom.getsibling(node)
+dom.addclass(node, {a: true, b: false})
+```
+
+3.  node在前：
+方法一：直接在 Node.prototype 上加函数
+方法二：新的接口 BetterNode
+```javascript
+window.jquery = function(NodeOrSelector){
+	let nodes = {}
+	if(typeof NodeOrSelector === 'string'){
+		let temp =document.querySelectorAll(NodeOrSelector)
+		for (let i = 0; i < temp.length; i++) {
+			nodes[i] = temp[i]
+			nodes.length = temp.length
+		}
+	}       //如果是选择器返回所有节点
+	else if(NodeOrSelector instanceof node){
+		nodes = {
+			0:NodeOrSelector,
+			length:1
+		}
+	}       //返回当前一个节点
+	nodes.getsiblings = function(){}
+	nodes.addclass = function(classes){
+		classes.forEach( value => {
+			for (let i = 0; i < nodes.length; i++) {
+				nodes[i].classList.add(value) 
+			}
+		})
+	}
+    nodes.test = function(text){
+		if(text === undefined){
+			var texts = []
+			for (let i = 0; i < nodes.length; i++) {
+				texts.push( nodes[i].textContent )
+			}
+		return texts
+		}
+		else{
+			for (let i = 0; i < nodes.length; i++) {
+				nodes[i].textContent = text
+			}
+			return texts
+		}
+	}
+}		
+	var node2 = jquery('ul > li')
+	node2.addclass(['a'])
+```
