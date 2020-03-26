@@ -560,7 +560,9 @@ window.jquery = function(NodeOrSelector){
 			return texts
 		}
 	}
+    return nodes
 }		
 	var node2 = jquery('ul > li')
 	node2.addclass(['a'])
+    node2.text('hi')
 ```
