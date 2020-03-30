@@ -566,3 +566,40 @@ window.jquery = function(NodeOrSelector){
 	node2.addclass(['a'])
     node2.text('hi')
 ```
+
+十九 DOM事件
+
+1.  ```html
+     <script>
+        function print(){
+            console.log('hi');    
+        }
+    </script>
+    <button id="X" onclick="print">A</button>
+    <button id="Y" onclick="print()">B</button>
+    <button id="Z" onclick="print.call()">C</button>
+    ```
+B C 是对的，onclick='要执行的代码',用户一旦点击，浏览器就eval('要执行的代码')
+
+2.  ```javascript
+        function(){
+            console.log('hi');
+        }
+        X.onclick = print //相当于给X添加一个函数类型的属性
+        X.onclick = print()
+        X.onclick = print.call()
+    ```
+一旦用户点击，浏览器就调用这个函数
+
+3.  ```javascript
+        xxx.addEventListener('click',f1)
+        xxx.addEventListener('click',f1)
+    ```
+可以添加多个时间监听事件
+
+4.  事件冒泡：事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的元素 </br>
+    事件捕获：不太具体的节点更早接收事件，而最具体的元素最后接收事件，和事件冒泡相反 
+
+addEventListener    removeEventListener   </br>
+第三个参数如果是true表示在捕获阶段调用事件处理程序，如果是false，则是在事件冒泡阶段处理
+如果最后一个事件既有捕获阶段又有冒泡阶段，则按照顺序执行
