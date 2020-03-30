@@ -603,3 +603,23 @@ B C 是对的，onclick='要执行的代码',用户一旦点击，浏览器就ev
 addEventListener    removeEventListener   </br>
 第三个参数如果是true表示在捕获阶段调用事件处理程序，如果是false，则是在事件冒泡阶段处理
 如果最后一个事件既有捕获阶段又有冒泡阶段，则按照顺序执行
+
+5.  点击别处关闭浮层
+```html
+<div id="wrapper" class="wrapper">
+    <button id="clickMe">点我</button>
+    <div id="popover" class="popover">
+      <input type="checkbox">浮层
+    </div>
+  </div>
+```
+```javascript
+    $(clickMe).on('click', function() {
+    $(popover).show()
+    setTimeout(function() {
+        $(document).one('click', function() {
+        $(popover).hide()
+    })
+  }, 0)
+})
+```
