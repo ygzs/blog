@@ -623,3 +623,19 @@ addEventListener    removeEventListener   </br>
   }, 0)
 })
 ```
+
+二十 JSONP
+
+请求方：前端程序员（浏览器)      </br>
+响应方：后端程序员（服务器)      </br>
+1.	请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy
+2.	响应方根据查询参数callbackName，构造形如        </br>
+        i.	yyy.call(undefined, '你要的数据')       </br>
+        ii.	yyy('你要的数据')       </br>
+这样的响应
+3.	浏览器接收到响应，就会执行 yyy.call(undefined, '你要的数据')
+4.	那么请求方就知道了他要的数据
+
+约定：      </br>
+1.	callbackName -> callback
+2.	yyy -> 随机数 ygzs123456789()
