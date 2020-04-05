@@ -635,7 +635,24 @@ addEventListener    removeEventListener   </br>
 这样的响应
 3.	浏览器接收到响应，就会执行 yyy.call(undefined, '你要的数据')
 4.	那么请求方就知道了他要的数据
+5.  jsonp 就是动态的创建script，所以只能发 get 请求
 
 约定：      </br>
 1.	callbackName -> callback
 2.	yyy -> 随机数 ygzs123456789()
+
+二十一 AJAX
+
+1.  用 form 可以发请求，但是会刷新页面或新开页面        </br>
+    用 a 可以发 get 请求，但是也会刷新页面或新开页面        </br>
+    用 img 可以发 get 请求，但是只能以图片的形式展示        </br>
+    用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示     </br>
+    用 script 可以发 get 请求，但是只能以脚本的形式运行     </br>
+2.  AJAX：异步的 JavaScript 和 XML       </br>
+    使用 XMLHttpRequest 发请求       </br>
+	服务器返回 XML 格式的字符串      </br>
+	JS 解析 XML，并更新局部页面      </br>
+3.  JSON是一门新的语言，只有 协议+端口+域名 一模一样才允许发 AJAX 请求（同源策略）
+4.  CORS 跨域:      </br>
+    response.setHeader('Access-Control-Allow-Origin', 'https://xxx.com')
+
