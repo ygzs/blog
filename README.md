@@ -656,3 +656,21 @@ addEventListener    removeEventListener   </br>
 4.  CORS 跨域:      </br>
     response.setHeader('Access-Control-Allow-Origin', 'https://xxx.com')
 
+二十二 AJAX 2
+
+1.  客户端的js发起请求，服务端的js发出响应      </br>
+	JS 可以设置任意请求 header 吗       </br>
+        第一部分 request.open('get', '/xxx')        </br>
+        第二部分 request.setRequestHeader('content-type','x-www-form-urlencoded')
+        第四部分 request.send('a=1&b=2')        </br>
+	JS 可以获取任意响应 header 吗？     </br>
+        第一部分 request.status / request.statusText        </br>
+        第二部分 request.getResponseHeader() / request.getAllResponseHeaders()<br>
+        第四部分 request.responseText       </br>
+2.  callback(回调)      </br>
+    回调就是一个函数的调用过程。函数a有一个参数，这个参数是个函数b，当函数a执行完以后执行函数b。那么这个过程就叫回调。      </br>
+    函数b是你以参数形式传给函数a的，那么函数b就叫回调函数。     </br>
+3.  promise     </br>
+    防止命名的不同          </br>
+    同一状态多次处理            </br>
+    return new Promise(function(resolve,reject){...})   </br>
