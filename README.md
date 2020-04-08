@@ -674,3 +674,24 @@ addEventListener    removeEventListener   </br>
     防止命名的不同          </br>
     同一状态多次处理            </br>
     return new Promise(function(resolve,reject){...})   </br>
+
+二十三
+
+1.	如何使用立即执行函数
+(1) 我们不想要全局变量，我们要使用局部变量,
+(2) ES 5 里面，只有函数有局部变量，于是我们声明一个 function xxx，然后 xxx.call()，
+(3) 这个时候 xxx 是全局变量，所以我们不能给这个函数名字，function(){}.call()，
+(4) 但是 Chrome 报错，语法错误，试出来一种方法可以不报错:
+i.	!function(){}.call() (我们不在乎这个匿名函数的返回值，所以加个!取反没关系) 
+ii.	(function(){}).call() 不推荐        
+iii.	 xxx                            
+iv.	 (function(){}).call() 报错            
+v.	frank192837192463981273912873098127912378.call() 不推荐  
+
+2.	如何使用闭包
+(1) 立即执行函数使得 person 无法被外部访问
+(2)	闭包使得匿名函数可以操作 person
+(3)	window.frankGrowUp 保存了匿名函数的地址
+(4)	任何地方都可以使用 window.frankGrowUp
+=> 任何地方都可以使用 window.frankGrowUp 操作 person，但是不能直接访问 person
+
