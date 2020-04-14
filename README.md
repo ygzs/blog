@@ -25,43 +25,43 @@ This is my first commit.
 
 二 数据
 
-1.  所有数字都是以64位浮点数形式存储的          </br>
-    第1位：符号位，0表示正数，1表示负数     </br>
-    第2位到第12位（共11位）：指数部分       </br>
-    第13位到第64位（共52位）：小数部分（即有效数字）        </br>
+1.  所有数字都是以64位浮点数形式存储的                                         </br>
+    第1位：符号位，0表示正数，1表示负数                                        </br>
+    第2位到第12位（共11位）：指数部分                                          </br>
+    第13位到第64位（共52位）：小数部分（即有效数字）                            </br>
     （如果指数部分的值在0到2047之间（不含两个端点），那么有效数字的第一位默认总是1，不保存在64位浮点数之中。）
 
 2.  数值范围
-    数值范围为21024到2-1023（开区间） </br>
+    数值范围为21024到2-1023（开区间）                                         </br>
     如果一个数大于等于2的1024次方，这时就会返回Infinity。
     如果一个数小于等于2的-1075次方，这时会直接返回0。
 
 3.  进制
-    八进制：有前缀0o或0O的数值，或者有前导0。       </br>
-    十六进制：有前缀0x或0X的数值。      </br>
-    二进制：有前缀0b或0B的数值。        </br>
+    八进制：有前缀0o或0O的数值，或者有前导0。                                   </br>
+    十六进制：有前缀0x或0X的数值。                                             </br>
+    二进制：有前缀0b或0B的数值。                                               </br>
 
 4.  特殊数值
-    NAN 表示“非数字”（Not a Number）,主要出现在将字符串解析成数字出错的场合。</br>
+    NAN 表示“非数字”（Not a Number）,主要出现在将字符串解析成数字出错的场合。    </br>
     Infinity表示“无穷”
 
 5.  用法
-    parseInt 方法用于将字符串转为整数。  </br>
-    parseFloat方法用于将一个字符串转为浮点数。      </br>
-    isNaN方法可以用来判断一个值是否为NaN。      </br>
-    isFinite方法返回一个布尔值，表示某个值是否为正常的数值。        </br>
+    parseInt 方法用于将字符串转为整数。                                        </br>
+    parseFloat方法用于将一个字符串转为浮点数。                                 </br>
+    isNaN方法可以用来判断一个值是否为NaN。                                     </br>
+    isFinite方法返回一个布尔值，表示某个值是否为正常的数值。                     </br>
 
 三 null, undefined，boolean
 
-1.  null是一个表示“空”的对象，转为数值时为0；       </br>
-    undefined是一个表示"此处无定义"的原始值， 转为数值时为NaN。     </br> 
-    变量没有值--undefined       </br>
-    有一个object没有给值--null      </br>
-    有一个非对象没有给值--nudefined     </br>
+1.  null是一个表示“空”的对象，转为数值时为0；                                  </br>
+    undefined是一个表示"此处无定义"的原始值， 转为数值时为NaN。                </br> 
+    变量没有值--undefined                                                   </br>
+    有一个object没有给值--null                                               </br>
+    有一个非对象没有给值--nudefined                                           </br>
 
-2.  “真”用关键字true表示，“假”用关键字false表示。  </br>
-    undefined  null  false  0  NaN  ""或''（空字符串）会被视为false     </br>
-    空数组（[]）和空对象（{}）对应的布尔值，都是true。      </br>
+2.  “真”用关键字true表示，“假”用关键字false表示。                              </br>
+    undefined  null  false  0  NaN  ""或''（空字符串）会被视为false           </br>
+    空数组（[]）和空对象（{}）对应的布尔值，都是true。                          </br>
 
 四 字符串
 
@@ -69,17 +69,15 @@ This is my first commit.
 
 2.  （+）可以连接多个单行字符串
 
-3.  \0 ：null（\u0000）         </br>
-    \b ：后退键（\u0008）       </br>
-    \f ：换页符（\u000C）       </br>
-    \n ：换行符（\u000A）       </br>
-    \r ：回车键（\u000D）       </br>
-    \t ：制表符（\u0009）       </br>
-    \v ：垂直制表符（\u000B）       </br>
-    \\' ：单引号（\u0027）      </br>
-    \\" ：双引号（\u0022）      </br>
-    \\\ ：反斜杠（\u005C）      </br>
-
+3.  \0 ：null（\u0000）                                                      </br>
+    \b ：后退键（\u0008                                                      </br>
+    \f ：换页符（\u000C                                                      </br>
+    \n ：换行符（\u000A）                                                     </br>
+    \r ：回车键（\u000D）                                                     </br>
+    \t ：制表符（\u0009）                                                     </br>
+    \v ：垂直制表符（\u000B）                                                 </br>
+    \\" ：双引号（\u0022）                                                    </br>
+    \\\ ：反斜杠（\u005C                                                     </br>
 4.  符串内部的单个字符无法改变和增删，这些操作会默认地失败
 
 5.  对于码点在U+10000到U+10FFFF之间的字符，JavaScript 总是认为它们是两个字符（length属性为2）。所以处理的时候，必须把这一点考虑在内，也就是说，JavaScript 返回的字符串长度可能是不正确的。
@@ -96,10 +94,10 @@ This is my first commit.
 
 5.  如果不同的变量名指向同一个对象，修改其中一个变量，会影响到其他所有变量。如果取消某一个变量对于原对象的引用，不会影响到另一个变量。（这种引用只局限于对象，不适用于原始类型）
 
-6.  可以使用点运算符，方括号运算符引用对象。   </br>
-    如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。  </br>
-    数字键可以不加引号，因为会自动转成字符串。   </br>
-    数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。  </br>
+6.  可以使用点运算符，方括号运算符引用对象。                                    </br>
+    如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。            </br>
+    数字键可以不加引号，因为会自动转成字符串。                                  </br>
+    数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。        </br>
     
 7.  delete命令用于删除对象的属性
     in运算符用于检查对象是否包含某个属性
@@ -116,16 +114,18 @@ var classes = {'a':true,'b':false,'c':true}
 
 六 类型转换
 
-1.  任意类型转数字 <br>
+1.  任意类型转数字                                                             <br>
     1.	Number(x)
     2.	parseInt(x, 10) 
     3.	parseFloat(x) 
     4.	x - 0
     5.	+x
-2.  任意类型转字符串 <br>
+
+2.  任意类型转字符串                                                           <br>
     1.	String(x)
     2.	x.toString()   //null,undefined 会报错
     3.	x + ''   //1+'1'==='11'
+
 3.  任意类型转布尔
     1.	Boolean(x)
     2.	!!x
@@ -183,7 +183,7 @@ console.log(b.x);//[object Object]
 
 九 垃圾回收
 
-如果一个对象没有被引用，特就是垃圾，将会被回收。<br>
+如果一个对象没有被引用，特就是垃圾，将会被回收。                                  <br>
 1.  
 ```javascript
 var a = 1
@@ -210,22 +210,23 @@ a.name === 'a' // true
 十 全局对象
 
 ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象。window里面有很多属性，都是全局变量，分为两类：
-1.  ECMAScript 规定的，     </br>
-	global.parseInt     </br>
-    global.parseFloat     </br>
-	global.Number     </br>
-	global.String     </br>
-    global.Boolean     </br>
-	global.Object     </br>
-2.	一种是浏览器自己加的属性     </br>
-	window.alert     </br>
-	window.prompt     </br>
-	window.comfirm     </br>
-	window.console.log     </br>
-	window.console.dir     </br>
-	window.document     </br>
-	window.document.createElement     </br>
-	window.document.getElementById     </br>
+1.  ECMAScript 规定的，                                                      </br>
+	global.parseIn                                                           </br>
+    global.parseFloat                                                        </br>
+	global.Number                                                            </br>
+	global.String                                                            </br>
+    global.Boolean                                                           </br>
+	global.Object                                                            
+
+2.	一种是浏览器自己加的属性                                                   </br>
+	window.alert                                                             </br>
+	window.prompt                                                            </br>
+	window.comfirm                                                           </br>
+	window.console.log                                                       </br>
+	window.console.dir                                                       </br>
+	window.document                                                          </br>
+	window.document.createElement                                            </br>
+	window.document.getElementById                                           </br>
 
 十一 全局函数
 
@@ -389,7 +390,7 @@ function log(element, index, array) {
 
 十六 函数
 
-1.  函数的声明方式      </br>
+1.  函数的声明方式                                                            </br>
 ```javascript
 function f(x,y){
 	return x+y
@@ -427,9 +428,9 @@ var f = (x,y) => {
 
 3.  调用栈(call stack)：调用栈的主要功能是保存调用的返回地址。每次函数执行完，返回到当前调用函数的位置执行下面的代码
 
-4.  按照语法树，就近原则（只看声明语句）        </br>
-我们只能确定变量是哪个变量，但是不能确定变量的值          </br>
-它的作用域与变量一样，就是其声明时所在的作用域，与其运行时所在的作用域无关。    </br>
+4.  按照语法树，就近原则（只看声明语句）                                        </br>
+我们只能确定变量是哪个变量，但是不能确定变量的值                                 </br>
+它的作用域与变量一样，就是其声明时所在的作用域，与其运行时所在的作用域无关。       </br>
 a=3,并不是在声明全局变量。如果在其父作用域中有声明a，那么仅仅是赋值。如果都没有就是声明加赋值
 ```javascript
 var a = 1
@@ -467,23 +468,23 @@ for(var i = 0; i<liTags.length; i++){
 
 2.  DOM 提供了一种表述形式将文档作为一个结构化的节点组以及包含属性和方法的对象。从本质上说，它将web 页面和脚本或编程语言连接起来了。（图）
 
-3.  innerText 和 textContent 区别：        </br>
-textContent 会获取所有元素的内容，包括 script 和 style 元素，然而 innerText 只展示给人看的元素        </br>
-textContent 会返回节点中的每一个元素。相反，innerText 受 CSS 样式的影响，并且不会返回隐藏元素的文本       </br>
-nextSibling,previousSibling 可能会获取到文本（回车）        </br>
-nodeType的值：1表示元素；3表示文本          </br>
+3.  innerText 和 textContent 区别：                                          </br>
+textContent 会获取所有元素的内容，包括 script 和 style 元素，然而 innerText 只展示给人看的元素                                                                     </br>
+textContent 会返回节点中的每一个元素。相反，innerText 受 CSS 样式的影响，并且不会返回隐藏元素的文本                                                                  </br>
+nextSibling,previousSibling 可能会获取到文本（回车）                           </br>
+nodeType的值：1表示元素；3表示文本                                            </br>
 node.cloneNode(deep)  : deep是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.
 
-4.  document.location : 属性返回一个只读对象，提供了当前文档的URL信息 </br>
-Document.referrer : 返回跳转或打开到当前页面的页面的 URI。如果用户直接打开了这个页面（不是通过页面跳转，而是通过地址栏或者书签等打开的），则该属性为空字符串   </br>
+4.  document.location : 属性返回一个只读对象，提供了当前文档的URL信息           </br>
+Document.referrer : 返回跳转或打开到当前页面的页面的 URI。如果用户直接打开了这个页面（不是通过页面跳转，而是通过地址栏或者书签等打开的），则该属性为空字符串           </br>
 
-5.  getAttribute()  用于获取元素的attribute(属性)值      </br>
-innerText是一个可写属性，返回元素内包含的文本内容，在多层次的时候会按照元素由浅到深的顺序拼接其内容      </br>
-innerHTML属性作用和innerText类似，但是不是返回元素的文本内容，而是返回元素的HTML结构，在写入的时候也会自动构建DOM            </br>
+5.  getAttribute()  用于获取元素的attribute(属性)值                           </br>
+innerText是一个可写属性，返回元素内包含的文本内容，在多层次的时候会按照元素由浅到深的顺序拼接其内容                                                                   </br>
+innerHTML属性作用和innerText类似，但是不是返回元素的文本内容，而是返回元素的HTML结构，在写入的时候也会自动构建DOM                                                    </br>
 
 十八 jquery 1
 
-1.  封装                    </br>
+1.  封装                                                                     </br>
 ```javascript
 //查找一个节点的兄弟节点
 function getsiblings(node){
@@ -597,10 +598,10 @@ B C 是对的，onclick='要执行的代码',用户一旦点击，浏览器就ev
     ```
 可以添加多个时间监听事件
 
-4.  事件冒泡：事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的元素 </br>
+4.  事件冒泡：事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的元素     </br>
     事件捕获：不太具体的节点更早接收事件，而最具体的元素最后接收事件，和事件冒泡相反 
 
-addEventListener    removeEventListener   </br>
+addEventListener    removeEventListener                                      </br>
 第三个参数如果是true表示在捕获阶段调用事件处理程序，如果是false，则是在事件冒泡阶段处理
 如果最后一个事件既有捕获阶段又有冒泡阶段，则按照顺序执行
 
@@ -626,72 +627,173 @@ addEventListener    removeEventListener   </br>
 
 二十 JSONP
 
-请求方：前端程序员（浏览器)      </br>
-响应方：后端程序员（服务器)      </br>
+请求方：前端程序员（浏览器)                                                    </br>
+响应方：后端程序员（服务器)                                                    </br>
 1.	请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy
-2.	响应方根据查询参数callbackName，构造形如        </br>
-        i.	yyy.call(undefined, '你要的数据')       </br>
-        ii.	yyy('你要的数据')       </br>
+2.	响应方根据查询参数callbackName，构造形如                                   </br>
+        i.	yyy.call(undefined, '你要的数据')                                </br>
+        ii.	yyy('你要的数据')                                                </br>
 这样的响应
 3.	浏览器接收到响应，就会执行 yyy.call(undefined, '你要的数据')
 4.	那么请求方就知道了他要的数据
 5.  jsonp 就是动态的创建script，所以只能发 get 请求
 
-约定：      </br>
+约定：                                                                       </br>
 1.	callbackName -> callback
 2.	yyy -> 随机数 ygzs123456789()
 
 二十一 AJAX
 
-1.  用 form 可以发请求，但是会刷新页面或新开页面        </br>
-    用 a 可以发 get 请求，但是也会刷新页面或新开页面        </br>
-    用 img 可以发 get 请求，但是只能以图片的形式展示        </br>
-    用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示     </br>
-    用 script 可以发 get 请求，但是只能以脚本的形式运行     </br>
-2.  AJAX：异步的 JavaScript 和 XML       </br>
-    使用 XMLHttpRequest 发请求       </br>
-	服务器返回 XML 格式的字符串      </br>
-	JS 解析 XML，并更新局部页面      </br>
+1.  用 form 可以发请求，但是会刷新页面或新开页面                                </br>
+    用 a 可以发 get 请求，但是也会刷新页面或新开页面                            </br>
+    用 img 可以发 get 请求，但是只能以图片的形式展示                            </br>
+    用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示                 </br>
+    用 script 可以发 get 请求，但是只能以脚本的形式运行                         </br>
+
+2.  AJAX：异步的 JavaScript 和 XML                                           </br>
+    使用 XMLHttpRequest 发请求                                              </br>
+	服务器返回 XML 格式的字符串                                              </br>
+	JS 解析 XML，并更新局部页面                                              </br>
+
 3.  JSON是一门新的语言，只有 协议+端口+域名 一模一样才允许发 AJAX 请求（同源策略）
-4.  CORS 跨域:      </br>
+
+4.  CORS 跨域:                                                              </br>
     response.setHeader('Access-Control-Allow-Origin', 'https://xxx.com')
 
 二十二 AJAX 2
 
-1.  客户端的js发起请求，服务端的js发出响应      </br>
-	JS 可以设置任意请求 header 吗       </br>
-        第一部分 request.open('get', '/xxx')        </br>
+1.  客户端的js发起请求，服务端的js发出响应                                      </br>
+	JS 可以设置任意请求 header 吗                                             </br>
+        第一部分 request.open('get', '/xxx')                                 </br>
         第二部分 request.setRequestHeader('content-type','x-www-form-urlencoded')
-        第四部分 request.send('a=1&b=2')        </br>
-	JS 可以获取任意响应 header 吗？     </br>
-        第一部分 request.status / request.statusText        </br>
+        第四部分 request.send('a=1&b=2')                                     </br>
+	JS 可以获取任意响应 header 吗？                                           </br>
+        第一部分 request.status / request.statusText                         </br>
         第二部分 request.getResponseHeader() / request.getAllResponseHeaders()<br>
-        第四部分 request.responseText       </br>
-2.  callback(回调)      </br>
-    回调就是一个函数的调用过程。函数a有一个参数，这个参数是个函数b，当函数a执行完以后执行函数b。那么这个过程就叫回调。      </br>
-    函数b是你以参数形式传给函数a的，那么函数b就叫回调函数。     </br>
-3.  promise     </br>
-    防止命名的不同          </br>
-    同一状态多次处理            </br>
-    return new Promise(function(resolve,reject){...})   </br>
+        第四部分 request.responseText                                        
+
+2.  callback(回调)                                                           </br>
+    回调就是一个函数的调用过程。函数a有一个参数，这个参数是个函数b，当函数a执行完以后执行函数b。那么这个过程就叫回调。                                              </br>
+    函数b是你以参数形式传给函数a的，那么函数b就叫回调函数。                      
+
+3.  promise                                                                  </br>
+    防止命名的不同                                                            </br>
+    同一状态多次处理                                                          </br>
+    return new Promise(function(resolve,reject){...})                        </br>
 
 二十三
 
 1.	如何使用立即执行函数
-(1) 我们不想要全局变量，我们要使用局部变量,
-(2) ES 5 里面，只有函数有局部变量，于是我们声明一个 function xxx，然后 xxx.call()，
-(3) 这个时候 xxx 是全局变量，所以我们不能给这个函数名字，function(){}.call()，
-(4) 但是 Chrome 报错，语法错误，试出来一种方法可以不报错:
-i.	!function(){}.call() (我们不在乎这个匿名函数的返回值，所以加个!取反没关系) 
-ii.	(function(){}).call() 不推荐        
-iii.	 xxx                            
-iv.	 (function(){}).call() 报错            
-v.	frank192837192463981273912873098127912378.call() 不推荐  
 
-2.	如何使用闭包
-(1) 立即执行函数使得 person 无法被外部访问
-(2)	闭包使得匿名函数可以操作 person
-(3)	window.frankGrowUp 保存了匿名函数的地址
-(4)	任何地方都可以使用 window.frankGrowUp
-=> 任何地方都可以使用 window.frankGrowUp 操作 person，但是不能直接访问 person
+(1) 我们不想要全局变量，我们要使用局部变量,                                     </br>
+(2) ES 5 里面，只有函数有局部变量，于是我们声明一个 function xxx，然后 xxx.call()，
+
+(3) 这个时候 xxx 是全局变量，所以我们不能给这个函数名字，function(){}.call()，   </br>
+(4) 但是 Chrome 报错，语法错误，试出来一种方法可以不报错:                       </br>
+i.	!function(){}.call() (我们不在乎这个匿名函数的返回值，所以加个!取反没关系)   </br>
+ii.	(function(){}).call() 不推荐                                             </br>
+iii.	 xxx                                                                 </br>
+iv.	 (function(){}).call() 报错                                              </br>
+v.	frank192837192463981273912873098127912378.call() 不推荐   
+
+2.	如何使用闭包                                                              </br>
+(1) 立即执行函数使得 person 无法被外部访问                                     </br>
+(2)	闭包使得匿名函数可以操作 person                                            </br>
+(3)	window.frankGrowUp 保存了匿名函数的地址                                   </br>
+(4)	任何地方都可以使用 window.frankGrowUp                                     </br>
+=> 任何地方都可以使用 window.frankGrowUp 操作 person，但是不能直接访问 person   </br>
+
+二十四  this
+
+1.  
+```javascript
+button.onclick = function f1(){
+    console.log(this) 
+}       // 触发事件的元素  button
+
+button.onclick.call({name: 'xx'}) //button
+
+button.addEventListener('click', function(){
+    console.log(this) 
+}       // 该元素的引用 button
+
+$('ul').on('click', 'li' /*selector*/, function(){
+    console.log(this) 
+})          //this 则代表了与 selector 相匹配的元素 li 元素
+
+```
+
+2.  
+```javascript
+function X(){
+    return object = {
+        name: 'object',
+        options: null,
+        f1(x){
+            this.options = x
+            this.f2()
+        },
+        f2(){
+            this.options.f2.call(this)
+        }
+    }
+}
+
+var options = {
+    name: 'options',
+    f1(){},
+    f2(){
+        console.log(this) // this 是 onject
+    }
+}
+
+var x = X()
+x.f1(options)
+
+```
+
+二十五 new
+
+1.  
+```javascript
+function 士兵(ID){
+    //var temp = {}
+    //this = temp
+    //士兵.prototype = { constructor:士兵 }
+    //this.__proto__ = 士兵.prototype
+    
+    this.ID = ID
+    this.生命值 = 42   //自有属性 
+  
+    //return this
+}
+
+create士兵.prototype = {        //共有属性
+  constructor:士兵，
+  兵种:"美国大兵",
+  攻击力:5,
+  行走:function(){ /*######*/ }，
+  奔跑:function(){ /*######*/ },
+  死亡:function(){ /*######*/ },
+  攻击:function(){ /*######*/ },
+  防御:function(){ /*######*/ }
+}
+```
+
+2.  var object = new Object()                                               </br>
+    自有属性 空                                                              </br>
+    object.proto === Object.prototype                                       </br>
+    
+    var array = new Array('a','b','c')                                      </br>
+    自有属性 0:'a' 1:'b' 2:'c',length:3                                      </br>
+    array.proto === Array.prototype                                         </br>
+    Array.prototype.proto === Object.prototype                              </br>
+    
+    var fn = new Function('x', 'y', 'return x+y')                           </br>
+    自有属性 length:2, 不可见的函数体: 'return x+y'                           </br>
+    fn.proto === Function.prototype                                         </br> 
+    
+    Array is a function                                                     </br>
+    Array = function(){...}                                                 </br>
+    Array.proto === Function.prototype                                      </br>
 
