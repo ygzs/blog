@@ -170,11 +170,40 @@ create士兵.prototype = {        //共有属性
     Array = function(){...}                                                 </br>
     Array.proto === Function.prototype                                      </br>
 
-七 cookie
+七 Cookie
 
 1.  服务器通过 Set-Cookie 响应头设置 Cookie
 2.	浏览器得到 Cookie 之后，每次请求都要带上 Cookie
 3.	服务器读取 Cookie 就知道登录用户的信息（email）
 4.  在 Chrome 登录了得到 Cookie，用 Safari 访问，Safari 不会带上 Cookie 
 5.  Cookie会被用户篡改（Session 来解决这个问题，防止用户篡改）
+6.  Cookie 默认在用户关闭界面后失效（后台可以设置），通常大小为 4KB
 
+八 Session
+
+1.  将 SessionId（随机数）通过 Cookie 发给客户端
+2.  客户端访问服务器时，服务器读取 SessionId 
+3.  服务器中有一块内存（哈希表）保存了所有 Session
+4.  通过 SessionId 我们可以得到对应用户的隐私信息（ID，Email）
+5.  这块内存就是服务器上的 Session
+
+九 localStorage
+
+1.  localStorage 与 HTTP 无关
+2.  HTTP 不会带上 localStorage 的值
+3.  只有相同域名的页面才能互相读取 localStorage （没有同源那么严格）
+4.  每个域名 localStorage 最大储存量为 5MB 左右
+5.  常用场景：记录有没有提示过用户
+6.  localStorage 永久有效，除非清理缓存
+
+十 SessionStroage
+
+1.  1,2,3,4 同上
+2.  SessionStroage 在用户关闭界面（会话结束）后失效
+
+十一 Cache-Control
+
+1.  chrome 先 server 发请求，server 返回文本的同时，还有响应头 max-age
+2.  在设置的时间内刷新页面（请求同样的 URL ），
+3.  chrome 不会先 server 发请求，直接在内存中返回
+4.  如果 js,css 改变，可以添加查询参数请求新的 
