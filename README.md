@@ -105,7 +105,7 @@ This is my first commit.
 ```javascript
 var classes = {'a':true,'b':false,'c':true}
 	for(var key in classes){
-		var value = classes[key]//不能使用 . 会被当成classes中的属性，返回undefined
+		var value = classes[key]//不能使用 classes.key 会被当成classes中的属性，返undefined
 		console.log(value)
 	}
 ```
