@@ -210,3 +210,23 @@ create士兵.prototype = {        //共有属性
 2.  在设置的时间内刷新页面（请求同样的 URL ），
 3.  chrome 不会先 server 发请求，直接在内存中返回
 4.  如果 js,css 改变，可以添加查询参数请求新的 
+
+十二 面试题
+
+1.	（必考） 你是如何理解 HTML 语义化的？
+第一种举例，段落用 p，边栏用 aside，主要内容用 main 标签
+第二种
+2.	 最开始是 PHP 后端写 HTML，不会 CSS，于是就用 table 来布局。table 使用展示表格的。严重违反了 HTML 语义化。
+3.	 后来有了专门的写 CSS 的前端，他们会使用 DIV + CSS 布局，主要是用 float 和绝对定位布局。稍微符合了 HTML 语义化。
+4.	 再后来，前端专业化，知道 HTML 的各个标签的用法，于是会使用恰当的标签来展示内容，而不是傻傻的全用 div，会尽量使用 h1、ul、p、main、header 等标签
+5.	 语义化的好处是已读、有利于SEO等。
+第三种：对面试官说请看我的博客 https://zhuanlan.zhihu.com/p/32570423
+6.	meta viewport 是做什么用的，怎么写？
+死背： <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+控制页面在移动端不要缩小显示。
+侃侃而谈
+7.	 一开始，所有页面都是给PC准备的，乔布斯推出 iPhone 3GS，页面是不适应手机屏幕的，所以乔布斯的工程师想了一个办法，默认把手机模拟成 980px，页面缩小。
+8.	 后来，智能手机普及，这个功能在部分网站不需要了，所以我们就用 meta:vp 让手机不要缩小我的网页。
+9.	canvas 元素是干什么的？
+项目丢给他。
+看 MDN 的 canvas 入门手册。
