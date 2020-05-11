@@ -211,7 +211,34 @@ create士兵.prototype = {        //共有属性
 3.  chrome 不会先 server 发请求，直接在内存中返回
 4.  如果 js,css 改变，可以添加查询参数请求新的 
 
-十二 面试题
+十二 手机调试方法
+
+1.  手机电脑连接到同一wifi下，启动http-server
+2.  因为手机上不能像在网页上一样直接使用console.log进行调试，（无法打开控制台）
+3.  使用 alter() 与 onerrow 结合使用
+```javascript
+window.onerror = function(message,file,row) {
+    alert(message)
+    alert(file)
+    alert(row)
+}
+```
+4.  自己写一个控制台，再结合 onerrow 也可以直接安装腾讯的vConsole使用
+```javascript
+<div id="consoleOutput" style="position:fixed;width:100%;left:0;bottom:0;height:100px;border:1px solid black;background:red;overflow: auto;">
+</div>
+<script>
+    window.console = {
+        log(x) {
+            let p = document.createElement('p')
+            p.innerText = x
+            consoleOutput.appendChild(p)
+        }
+    }
+</script>
+```
+
+十三 面试题
 
 1.	（必考） 你是如何理解 HTML 语义化的？
 第一种举例，段落用 p，边栏用 aside，主要内容用 main 标签
