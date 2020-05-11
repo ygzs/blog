@@ -257,3 +257,36 @@ window.onerror = function(message,file,row) {
 9.	canvas 元素是干什么的？
 项目丢给他。
 看 MDN 的 canvas 入门手册。
+
+十四 面试题2
+1.	（必考） 说说盒模型。
+•	举例：
+content-box: width == 内容区宽度
+border-box: width == 内容区宽度 + padding 宽度 + border 宽度
+2.	css reset 和 normalize.css 有什么区别？
+•	考英文：
+•	reset 重置，之前的样式我不要，a{color: red;}，抛弃默认样式
+•	normalize 让所有浏览器的标签都跟标准规定的默认样式一致，各浏览器上的标签默认样式基本统一。
+3.	（必考）如何居中？
+•	平时总结：
+•	水平居中：
+•	内联：爸爸身上写 text-align:center;
+•	块级：margin-left: auto; margin-right: auto;
+•	垂直居中： https://jscode.me/t/topic/1936
+4.	选择器优先级如何确定？
+i.	选择器越具体，优先级越高。 #xxx 大于 .yyy
+ii.	同样优先级，写在后面的覆盖前面的。
+iii.	color: red !important; 优先级最高。
+5.	BFC 是什么？
+•	举例：
+•	overflow:hidden 清除浮动。（方方总是用 .clearfix 清除浮动，坚决不用 overflow:hidden 清除浮动）
+•	overflow:hidden 取消父子 margin 合并。http://jsbin.com/conulod/1/edit?html,css,js,output （方方用 padding-top: 1px;）
+6.	如何清除浮动？
+ .	overflow: hidden （方方反对）
+i.	.clearfix 清除浮动写在爸爸身上
+ii.	 .clearfix::after{
+iii.	     content: ''; display: block; clear:both;
+iv.	 }
+v.	 .clearfix{
+vi.	     zoom: 1; /* IE 兼容 */
+vii.	 }
