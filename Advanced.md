@@ -290,3 +290,45 @@ iv.	 }
 v.	 .clearfix{
 vi.	     zoom: 1; /* IE 兼容 */
 vii.	 }
+
+十五 面试题3
+
+1.	JS 有哪些数据类型？
+string number bool undefined null object symbol
+object 包括了数组、函数、正则、日期等对象
+一旦出现（数组、函数、正则、日期、NaN）直接0分
+2.	（必考） Promise 怎么使用？
+•	then
+•	  $.ajax(...).then(成功函数, 失败函数)
+•	链式 then
+•	  $.ajax(...).then(成功函数, 失败函数).then(成功函数2, 失败函数2)
+•	如何自己生成 Promise 对象
+•	  function xxx(){
+•	      return new Promise(function(resolve, reject){
+•	          setTimeout(()=>{
+•	              resolve() 或者 reject()
+•	          },3000)
+•	      })
+•	  }
+•	  xxx().then(...)
+3.	（必考） AJAX 手写一下？
+4.	 let xhr = new XMLHttpRequest()
+5.	 xhr.open('POST', '/xxxx')
+6.	 xhr.onreadystatechange = function(){
+7.	     if(xhr.readyState === 4 && xhr.status === 200){
+8.	         console.log(xhr.responseText)
+9.	     }
+10.	 }
+11.	 xhr.send('a=1&b=2')
+12.	（必考）闭包是什么？
+13.	 function (){
+14.	     var n = 0
+15.	     return function(){
+16.	         n += 1
+17.	     }
+18.	 }
+19.	
+20.	 let  adder = ()
+21.	 adder() // n === 1
+22.	 adder() // n === 2
+23.	 console.log(n) // n is not defined
