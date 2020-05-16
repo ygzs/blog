@@ -472,6 +472,24 @@ window.onerror = function(message,file,row) {
     }
     //hash: {4: true, 2: true, 5: true, 6:true, 3: true}
     console.log(Object.keys(hash))
+
+    function unique2(array){ 
+    var newArray = []
+    array.forEach((x,y)=>{
+    if(!(array[y] in newArray)) {
+    newArray.push(x)
+    }
+    })
+    return newArray
+    }
+
+    let mySet = new Set([1,5,2,3,4,2,3,1,3,4])
+    function unique3() {
+    let a = []
+    mySet.forEach((x)=>{a.push(x)}) 
+    return a
+    }
+
     ```
     Set去重
     ```javascript
