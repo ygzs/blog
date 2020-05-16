@@ -238,97 +238,130 @@ window.onerror = function(message,file,row) {
 </script>
 ```
 
-十三 面试题
+十三 面试题 html
 
 1.	（必考） 你是如何理解 HTML 语义化的？
-第一种举例，段落用 p，边栏用 aside，主要内容用 main 标签
-第二种
-2.	 最开始是 PHP 后端写 HTML，不会 CSS，于是就用 table 来布局。table 使用展示表格的。严重违反了 HTML 语义化。
-3.	 后来有了专门的写 CSS 的前端，他们会使用 DIV + CSS 布局，主要是用 float 和绝对定位布局。稍微符合了 HTML 语义化。
-4.	 再后来，前端专业化，知道 HTML 的各个标签的用法，于是会使用恰当的标签来展示内容，而不是傻傻的全用 div，会尽量使用 h1、ul、p、main、header 等标签
-5.	 语义化的好处是已读、有利于SEO等。
-第三种：对面试官说请看我的博客 https://zhuanlan.zhihu.com/p/32570423
-6.	meta viewport 是做什么用的，怎么写？
-死背： <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-控制页面在移动端不要缩小显示。
-侃侃而谈
-7.	 一开始，所有页面都是给PC准备的，乔布斯推出 iPhone 3GS，页面是不适应手机屏幕的，所以乔布斯的工程师想了一个办法，默认把手机模拟成 980px，页面缩小。
-8.	 后来，智能手机普及，这个功能在部分网站不需要了，所以我们就用 meta:vp 让手机不要缩小我的网页。
-9.	canvas 元素是干什么的？
-项目丢给他。
-看 MDN 的 canvas 入门手册。
+    <pre>
+    第一种:
+    举例，段落用 p，边栏用 aside，主要内容用 main 标签
+    第二种:
+    最开始是 PHP 后端写 HTML，不会 CSS，于是就用 table 来布局。table 使用展示表格的。严重违反了 HTML 语义化。
+    后来有了专门的写 CSS 的前端，他们会使用 DIV + CSS 布局，主要是用 float 和绝对定位布局。稍微符合了 HTML 语义化。
+    再后来，前端专业化，知道 HTML 的各个标签的用法，于是会使用恰当的标签来展示内容，而不是傻傻的全用 div，会尽量使用 h1、ul、p、main、header 等标签
+    语义化的好处是已读、有利于SEO等。
+    参考 https://zhuanlan.zhihu.com/p/32570423
+    </pre>
 
-十四 面试题2
+2.	meta viewport 是做什么用的，怎么写？
+    ```html
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    // 控制页面在移动端不要缩小显示
+    ```
+    <pre>
+    一开始，所有页面都是给PC准备的，乔布斯推出 iPhone 3GS，页面是不适应手机屏幕的，所以乔布斯的工程师想了一个办法，默认把手机模拟成 980px，页面缩小。
+    后来，智能手机普及，这个功能在部分网站不需要了，所以我们就用 meta:vp 让手机不要缩小我的网页。
+    </pre>
+
+3.	canvas 元素是干什么的？
+
+十四 面试题 css
+
 1.	（必考） 说说盒模型。
-•	举例：
-content-box: width == 内容区宽度
-border-box: width == 内容区宽度 + padding 宽度 + border 宽度
-2.	css reset 和 normalize.css 有什么区别？
-•	考英文：
-•	reset 重置，之前的样式我不要，a{color: red;}，抛弃默认样式
-•	normalize 让所有浏览器的标签都跟标准规定的默认样式一致，各浏览器上的标签默认样式基本统一。
-3.	（必考）如何居中？
-•	平时总结：
-•	水平居中：
-•	内联：爸爸身上写 text-align:center;
-•	块级：margin-left: auto; margin-right: auto;
-•	垂直居中： https://jscode.me/t/topic/1936
-4.	选择器优先级如何确定？
-i.	选择器越具体，优先级越高。 #xxx 大于 .yyy
-ii.	同样优先级，写在后面的覆盖前面的。
-iii.	color: red !important; 优先级最高。
-5.	BFC 是什么？
-•	举例：
-•	overflow:hidden 清除浮动。（方方总是用 .clearfix 清除浮动，坚决不用 overflow:hidden 清除浮动）
-•	overflow:hidden 取消父子 margin 合并。http://jsbin.com/conulod/1/edit?html,css,js,output （方方用 padding-top: 1px;）
-6.	如何清除浮动？
- .	overflow: hidden （方方反对）
-i.	.clearfix 清除浮动写在爸爸身上
-ii.	 .clearfix::after{
-iii.	     content: ''; display: block; clear:both;
-iv.	 }
-v.	 .clearfix{
-vi.	     zoom: 1; /* IE 兼容 */
-vii.	 }
+	<pre>
+    举例：
+    box-sizing: content-box: width == 内容区宽度
+    box-sizing: border-box: width == 内容区宽度 + padding 宽度 + border 宽度
+    </pre>
 
-十五 面试题3
+2.	css reset 和 normalize.css 有什么区别？
+    <pre>
+    reset 重置，之前的样式我不要，a{color: red;}，抛弃默认样式
+    normalize 让所有浏览器的标签都跟标准规定的默认样式一致，各浏览器上的标签默认样式基本统一。
+    </pre>
+
+3.	（必考）如何居中？
+    <pre>
+    水平居中：
+    内联：爸爸身上写 text-align:center;
+    块级：margin-left: auto; margin-right: auto;
+
+    垂直居中： https://jscode.me/t/topic/1936
+    </pre>
+
+4.	选择器优先级如何确定？
+    <pre>
+    选择器越具体，优先级越高。 #xxx 大于 .yyy
+    同样优先级，写在后面的覆盖前面的。
+	color: red !important; 优先级最高。
+    </pre>
+
+5.	BFC 是什么？
+    <pre>
+    overflow:hidden 清除浮动。（推荐用 .clearfix 清除浮动）
+    overflow:hidden 取消父子 margin 合并。（推荐用 padding-top: 1px;）
+    </pre>
+
+6.	如何清除浮动？
+    <pre>
+    overflow: hidden （不推荐）
+    .clearfix 清除浮动写在爸爸身上
+    </pre>
+    ```css
+    .clearfix::after{
+	    content: ''; display: block; clear:both;
+    }
+    ```
+
+十五 面试题 js
 
 1.	JS 有哪些数据类型？
-string number bool undefined null object symbol
-object 包括了数组、函数、正则、日期等对象
-一旦出现（数组、函数、正则、日期、NaN）直接0分
+    string number bool undefined null object symbol
+    object 包括了数组、函数、正则、日期等对象
+    一旦出现（数组、函数、正则、日期、NaN）直接0分
 2.	（必考） Promise 怎么使用？
-•	then
-•	  $.ajax(...).then(成功函数, 失败函数)
-•	链式 then
-•	  $.ajax(...).then(成功函数, 失败函数).then(成功函数2, 失败函数2)
-•	如何自己生成 Promise 对象
-•	  function xxx(){
-•	      return new Promise(function(resolve, reject){
-•	          setTimeout(()=>{
-•	              resolve() 或者 reject()
-•	          },3000)
-•	      })
-•	  }
-•	  xxx().then(...)
+    <pre>
+    then
+    $.ajax(...).then(成功函数, 失败函数)
+	
+    链式 then
+    $.ajax(...).then(成功函数, 失败函数).then(成功函数2, 失败函数2)
+    
+    如何自己生成 Promise 对象
+    </pre>
+    ```javascript
+        function xxx(){
+            return new Promise(function(resolve, reject){
+                setTimeout(()=>{
+                    resolve() 或者 reject()
+                },3000)
+            })
+        }
+        xxx().then(...)
+    ```
+
 3.	（必考） AJAX 手写一下？
-4.	 let xhr = new XMLHttpRequest()
-5.	 xhr.open('POST', '/xxxx')
-6.	 xhr.onreadystatechange = function(){
-7.	     if(xhr.readyState === 4 && xhr.status === 200){
-8.	         console.log(xhr.responseText)
-9.	     }
-10.	 }
-11.	 xhr.send('a=1&b=2')
-12.	（必考）闭包是什么？
-13.	 function (){
-14.	     var n = 0
-15.	     return function(){
-16.	         n += 1
-17.	     }
-18.	 }
-19.	
-20.	 let  adder = ()
-21.	 adder() // n === 1
-22.	 adder() // n === 2
-23.	 console.log(n) // n is not defined
+    ```javascript
+        let xhr = new XmlHttpRequest()
+        xhr.open('POST','/xxx')
+        xhr.onreadystatechange = ()=>{
+            if(xhr.readystate === 4 && xhr.status === 200){
+                 console.log(xhr.responseText)      
+            }
+        }
+        xhr.send('a=1&b=2')
+    ```
+
+4.	（必考）闭包是什么？
+    ```javascript
+    function Adder (){
+        var n = 0
+        return function(){
+            n += 1
+        }
+    }
+    let  adder = Adder()
+    adder() // n === 1
+    adder() // n === 2
+    console.log(n) // n is undefined
+    ```
+
