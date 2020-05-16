@@ -318,6 +318,7 @@ window.onerror = function(message,file,row) {
     string number bool undefined null object symbol
     object 包括了数组、函数、正则、日期等对象
     一旦出现（数组、函数、正则、日期、NaN）直接0分
+
 2.	（必考） Promise 怎么使用？
     <pre>
     then
@@ -364,4 +365,115 @@ window.onerror = function(message,file,row) {
     adder() // n === 2
     console.log(n) // n is undefined
     ```
+    正确参考：https://zhuanlan.zhihu.com/p/22486908
 
+5.  （必考）这段代码里的 this 是什么？
+    <pre>
+    function() 里面的 this 就是 window
+    function() 是 strict mode，this 就是 undefined
+    a.b.c.function() 里面的 this 就是 a.b.c
+    new Function() 里面的 this 就是新生成的实例
+    () => console.log(this) 里面 this 跟外面的 this 的值一模一样
+    
+    正确参考：https://zhuanlan.zhihu.com/p/23804247
+    使用function定义的函数，this的指向随着调用环境的变化而变化的，
+    而箭头函数中的this指向是固定不变的，一直指向的是定义函数的环境。
+    </pre>
+
+6.  必考）什么是立即执行函数？使用立即执行函数的目的是什么？
+    ```javascript
+    ;(function(){
+        var xx
+    }())
+    ;(function(){
+        var xx
+    })()
+    !function(){
+        var xx
+    }()
+    ~function(){
+        var xx
+    }()
+    ```
+    造出一个函数作用域，防止污染全局变量
+    ```javascript
+    {
+        let  name
+    }
+
+    ```
+
+7.	async/await 语法了解吗？目的是什么？
+    ```javascript
+    function resolveAfter2Seconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved')
+            }, 2000)
+        })
+    }
+    async function asyncCall() {
+        console.log('calling')
+        const result = await resolveAfter2Seconds()
+        console.log(result)
+        // expected output: 'resolved'
+    }
+    asyncCall();
+    ```
+    把异步代码写成同步代码。
+
+8.  如何实现深拷贝？
+    <pre>
+    JSON 深拷贝
+    缺点：JSON 不支持函数、引用、undefined、RegExp、Date……
+    </pre>
+    ```javascript
+    let a = {...}
+    let b = JSON.parse(JSON.stringify(a))
+    ```
+    <pre>
+    递归拷贝
+    </pre>
+    ```javascript
+    function copy(obj){
+        let newobj = null;      //声明一个变量用来储存拷贝之后的内容
+
+        if(typeof(obj) == 'object' && obj !== null){
+            //判断数据类型是否是复杂类型，如果是则调用自己，再次循环，如果不是，直接赋值即可，
+            //由于null不可以循环但类型又是object，所以这个需要对null进行判断
+        
+            newobj = obj instanceof Array? [] : {};   
+            //声明一个变量用以储存拷贝出来的值,根据参数的具体数据类型声明不同的类型来储存
+            
+	        //循环obj 中的每一项，如果里面还有复杂数据类型，则直接利用递归再次调用copy函数
+            for(var i in obj){  
+                newobj[i] = copy(obj[i])
+            }
+        }else{
+            newobj = obj
+        }    
+        
+        return newobj;    //函数必须有返回值，否则结构为undefined
+   }
+
+    ```
+
+9.  如何实现数组去重？
+    计数排序的逻辑（只能正整数）
+    ```javascript
+    let a = [4,2,5,6,3,4,5]
+    let hash = {}
+    for(let i=0;i<a.length;i++){
+        if(a[i] in hash){
+            //
+        }else{
+            hashTab[ a[i] ] = true
+        }
+    }
+    //hash: {4: true, 2: true, 5: true, 6:true, 3: true}
+    console.log(Object.keys(hash))
+    ```
+    Set去重
+    ```javascript
+    Array.from(new Set(a))
+    ```
