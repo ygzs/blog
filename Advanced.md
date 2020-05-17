@@ -495,3 +495,86 @@ window.onerror = function(message,file,row) {
     ```javascript
     Array.from(new Set(a))
     ```
+
+10.	如何用正则实现 string.trim() ？
+    ```javascript
+    function trim(string){
+        return string.replace(/^\s+|\s+$/g, '')
+    }
+    ```
+
+11. js原型是什么
+    <pre>
+    var a = [1,2,3]
+    a 只有0、1、2、length 4 个key
+    为什么可以 a.push(4) ，push 是哪来的？
+    a.__proto__ === Array.prototype
+    push 就是沿着 a.__proto__ 找到的，也就是 Array.prototype.push
+    Array.prototype 还有很多方法，如 join、pop、slice、splice
+    Array.prototype 就是 a 的原型（proto）
+    
+    参考：https://zhuanlan.zhihu.com/p/23090041
+    </pre>
+
+12.	ES 6 中的 class 了解吗？
+    ```javascript
+    class Rectangle {
+        // constructor
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        // Getter
+        get area() {
+            return this.calcArea()
+        }
+        // Method
+        calcArea() {
+            return this.height * this.width;
+        }
+    }
+    const square = new Rectangle(10, 10);
+
+    console.log(square.area); // 100
+    ```
+
+13.	JS 如何实现继承？
+    原型链
+    ```javascript
+    function Animal(){
+        this.body = '重量'
+    }
+    Animal.prototype.move = function(){ }
+
+    function Human(name){
+        Animal.apply(this,arguments)
+        this.name = name
+    }
+
+    // Human.prototype.__proto__ = Animal.prototype // 非法
+    var fn = function(){}
+    fn.prototype = Animal.prototype
+    Human.prototype = new fn()
+
+    Human.prototype.useTools = function(){}
+     var xiaoming = new Human()
+    ```
+    extends关键字
+    ```javascript
+    class Animal{
+        constructor(){
+            this.body = '重量'
+        }
+        move(){}
+    }
+
+    class Human extends Animal{
+        constructor(name){
+            super()
+            this.name = name
+        }
+        useTools(){}
+    }
+
+    var xiaoming = new Human()
+    ```
