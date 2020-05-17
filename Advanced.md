@@ -578,3 +578,50 @@ window.onerror = function(message,file,row) {
 
     var xiaoming = new Human()
     ```
+
+十六 DOM面试题
+
+1.  DOM事件模型是什么？
+    <pre>
+    捕获
+    冒泡
+    如果这个元素是被点击的元素，那么捕获不一定在冒泡之前，顺序是由监听顺序决定的。
+    </pre>
+
+2. 	移动端的触摸事件了解吗？
+    <pre>
+    touchstart touchmove touchend touchcancel
+    模拟 swipe 事件：记录两次 touchmove 的位置差，如果后一次在前一次的右边，说明向右滑了。
+    </pre>
+
+3. 	事件委托是什么？有什么好处？
+    <pre>
+    假设父元素有4个儿子，我不监听4个儿子，而是监听父元素，
+    看触发事件的元素是哪个儿子，这就是事件委托。
+    
+    可以监听还没有出生的儿子（动态生成的元素）。省监听器。
+    </pre>
+    ```javascript
+    function listen(element,eventType,selector,fn){
+        element.addEventListener(eventType,e=>{
+            if(e.target.matches(selector)){
+                fn.call(el,e,el)
+            }
+        })
+    }
+
+    function listen(element, eventType, selector, fn) {
+        element.addEventListener(eventType, e => {
+	        let el = e.target
+	        while (!el.matches(selector)) {
+	            if (element === el) {
+	                el = null
+	                break
+	            }
+	            el = el.parentNode
+	        }
+	        el && fn.call(el, e, el)
+	    })
+	    return element
+	}
+    ```
