@@ -287,6 +287,8 @@ window.onerror = function(message,file,row) {
     (?<!y)x     仅仅当'x'前面不是'y'时匹配'x'，这被称为反向否定查找。
     </pre> 
 
+4.  参考：https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md
+
 十四 面试题 html
 
 1.	（必考） 你是如何理解 HTML 语义化的？
@@ -676,3 +678,113 @@ window.onerror = function(message,file,row) {
 	    return element
 	}
     ```
+
+十八 HTTP面试题
+
+1.  HTTP 状态码知道哪些？
+    <pre>
+    2** 开头，（请求成功）表示成功处理了请求的状态码
+    3** 开头，（请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向
+    4** 开头，（请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理
+    5** 开头，（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。
+    </pre>
+
+2.	301 和 302 的区别是什么？
+    <pre>
+    301 永久重定向，浏览器会记住
+    302 临时重定向
+    </pre>
+
+3.	HTTP 缓存怎么做？
+    <pre>
+    Cache-Control: max-age=300
+    http://cdn.com/1.js?v=1 避开缓存(更新)
+    </pre>
+
+4.	Cache-Control 和 Etag 的区别是什么？
+    Cache-Control直接是通过不请求来实现，而ETag是会发请求的，只不过服务器根据请求的东西的内容有无变化来判断是否返回请求的资源
+
+5.	Cookie 是什么？Session 是什么？
+    <pre>
+    Cookie
+    HTTP响应通过 Set-Cookie 设置 Cookie
+    浏览器访问指定域名是必须带上 Cookie 作为 Request Header
+    Cookie 一般用来记录用户信息
+    
+    Session
+    Session 是服务器端的内存（数据）
+    Session 一般通过在 Cookie 里记录 SessionID 实现
+    SessionID 一般是随机数
+    </pre>
+
+6.	LocalStorage 和 Cookie 的区别是什么？
+    <pre>
+    Cookie 会随请求被发到服务器上，而 LocalStorage 不会
+    Cookie 大小一般4k以下，LocalStorage 一般5Mb 左右
+    </pre>
+
+7.	（必考）GET 和 POST 的区别是什么？
+    <pre>
+    参数
+    GET 的参数放在 url 的查询参数里，POST 的参数（数据）放在请求消息体里
+    
+    安全（扯淡）
+    GET 没有 POST 安全（都不安全）
+    
+    GET 的参数（url查询参数）有长度限制，一般是 1024 个字符。POST 的参数（数据）没有长度限制（扯淡，4~10Mb 限制）
+    
+    包
+    GET 请求只需要发一个包，POST 请求需要发两个以上包（因为 POST 有消息体）（扯淡，GET 也可以用消息体）
+    
+    GET 用来读数据，POST 用来写数据，POST 不幂等（幂等的意思就是不管发多少次请求，结果都一样。）
+    </pre>
+
+8.	（必考）怎么跨域？JSONP 是什么？CORS 是什么？postMessage 是什么？
+    JSONP
+     ```javascript
+    //前端
+        let script = document.createElement('script')
+        let functionName = 'ygzs'+ parseInt(Math.random()*10000000 ,10)
+        window[functionName] = function(resule){  // 每次请求之前搞出一个随机的函数
+            if(result === 'success'){
+                alert('success')
+            }else{
+                continue
+            }
+        }
+        script.src = 'https://xxx.com?callback=' + functionName
+        document.body.appendChild(script)
+        script.onload = function(e){ // 状态码是 200~299 则表示成功
+            e.currentTarget.remove()
+            delete window[functionName] // 请求完了就干掉这个随机函数
+        }
+        script.onerror = function(e){ // 状态码大于等于 400 则表示失败
+            e.currentTarget.remove()
+            delete window[functionName] // 请求完了就干掉这个随机函数
+        }
+    //后端
+    ...
+    if (path === '/xxx'){
+        response.setHeader('Content-Type', 'application/javascript')
+        response.statusCode = 200
+        response.write(`
+            ${query.callback}.call(undefined, 'success')
+        `)
+        response.end()
+    }
+    ...
+
+    ```
+    CORS
+    ```javascript
+    //后端
+        response.setHeader('Access-Control-Allow-Origin', *)
+    ```
+    postMessage
+    <pre>
+    用法：postMessage(data,origin)方法接受两个参数
+    
+    data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。
+    
+    origin： 协议+主机+端口号，也可以设置为"*"，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为"/"。
+    </pre>
