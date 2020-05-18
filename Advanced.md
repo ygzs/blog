@@ -238,7 +238,56 @@ window.onerror = function(message,file,row) {
 </script>
 ```
 
-十三 面试题 html
+十三 正则
+
+1.  <table>
+    <tr>
+    <th>元字符</th>
+    <th>描述</th>
+    </tr>
+    <tr><td>.</td><td>匹配任意单个字符除了换行符</td></tr>
+    <tr><td>[ ]</td><td>字符种类.匹配方括号内的任意字符</td></tr>
+    <tr><td>[^ ]</td><td>否定字符类.匹配除了方括号里的任意字符</td></tr>
+    <tr><td>*</td><td>匹配>=0个重复的在*号之前的字符</td></tr>
+    <tr><td>+</td><td>匹配>=1个重复的+号前的字符</td></tr>
+    <tr><td>?</td><td>匹配前面一个表达式0次或者1次</td></tr>
+    <tr><td>{n,m}</td><td>匹配前面的字符至少n次，最多m次</td></tr>
+    <tr><td>(xyz)</td><td>字符集，匹配与 xyz 完全相等的字符串</td></tr>
+    <tr><td>|</td><td>或运算符，匹配符号前或后的字符</td></tr>
+    <tr><td>\</td><td>转义字符,用于匹配一些保留的字符</td></tr>
+    <tr><td>^</td><td>从开始行开始匹配
+    例如，/^A/ 并不会匹配 "an A" 中的 'A'，但是会匹配 "An E" 中的 'A'</td></tr>
+    <tr><td>$</td><td>从末端开始匹配
+    例如，/t$/ 并不会匹配 "eater" 中的 't'，但是会匹配 "eat" 中的 't'</td></tr>
+    </table>
+
+2. <pre>
+        "*?"  重复任意次，但尽可能少重复 
+        如 "acbacb"  正则  "a.*?b" 只会取到第一个"acb" 原本可以全部取到但加了限定符后，只会匹配尽可能少的字符 ，而"acbacb"最少字符的结果就是"acb" 
+
+    　　"+?"  重复1次或更多次，但尽可能少重复，与上面一样，只是至少要重复1次
+
+    　　"??"  重复0次或1次，但尽可能少重复
+        如 "aaacb" 正则 "a.??b" 只会取到最后的三个字符"acb"
+
+    　　"{n,m}?"  重复n到m次，但尽可能少重复
+        如 "aaaaaaaa"  正则 "a{0,m}" 因为最少是0次所以取到结果为空
+
+    　　"{n,}?"  重复n次以上，但尽可能少重复
+        如 "aaaaaaa"  正则 "a{1,}" 最少是1次所以取到结果为 "a"
+    </pre>  
+
+3.  <pre>
+    "(exp)"    匹配exp,并捕获文本到自动命名的组里  
+    "(?<name>exp)"     匹配exp,并捕获文本到名称为name的组里
+    "(?:exp)"   匹配exp,不捕获匹配的文本，也不给此分组分配组号
+    x(?=y)      匹配'x'仅仅当'x'后面跟着'y'.这种叫做先行断言。
+    (?<=y)x     匹配'x'仅当'x'前面是'y'.这种叫做后行断言。
+    x(?!y)      仅仅当'x'后面不跟着'y'时匹配'x'，这被称为正向否定查找。
+    (?<!y)x     仅仅当'x'前面不是'y'时匹配'x'，这被称为反向否定查找。
+    </pre> 
+
+十四 面试题 html
 
 1.	（必考） 你是如何理解 HTML 语义化的？
     <pre>
@@ -264,7 +313,7 @@ window.onerror = function(message,file,row) {
 
 3.	canvas 元素是干什么的？
 
-十四 面试题 css
+十五 面试题 css
 
 1.	（必考） 说说盒模型。
 	<pre>
@@ -312,7 +361,7 @@ window.onerror = function(message,file,row) {
     }
     ```
 
-十五 面试题 js
+十六 面试题 js
 
 1.	JS 有哪些数据类型？
     string number bool undefined null object symbol
@@ -502,6 +551,8 @@ window.onerror = function(message,file,row) {
         return string.replace(/^\s+|\s+$/g, '')
     }
     ```
+    在线练习地址：https://regex101.com/
+
 
 11. js原型是什么
     <pre>
@@ -512,7 +563,7 @@ window.onerror = function(message,file,row) {
     push 就是沿着 a.__proto__ 找到的，也就是 Array.prototype.push
     Array.prototype 还有很多方法，如 join、pop、slice、splice
     Array.prototype 就是 a 的原型（proto）
-    
+
     参考：https://zhuanlan.zhihu.com/p/23090041
     </pre>
 
@@ -579,7 +630,7 @@ window.onerror = function(message,file,row) {
     var xiaoming = new Human()
     ```
 
-十六 DOM面试题
+十七 DOM面试题
 
 1.  DOM事件模型是什么？
     <pre>
