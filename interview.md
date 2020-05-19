@@ -549,3 +549,13 @@
     1.父组件传递了message数据给子组件，并且通过v-on绑定了一个getChildData事件来监听子组件的触发事件；
     2.子组件通过props得到相关的message数据,最后通过this.$emit触发了getChildData事件。
     </pre>
+    
+    $emit/$on
+    <pre>
+    这种方法通过一个空的 Vue 实例作为中央事件总线（事件中心），用它来触发事件和监听事件,巧妙而轻量地实现了任何组件间的通信，包括父子、兄弟、跨级。当我们的项目比较大时，可以选择更好的状态管理解决方案 vuex。
+    </pre>
+    ```javascript
+        var Event=new Vue();
+        Event.$emit(事件名,数据);
+        Event.$on(事件名,data => {});
+    ```
