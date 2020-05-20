@@ -559,3 +559,32 @@
         Event.$emit(事件名,数据);
         Event.$on(事件名,data => {});
     ```
+
+    $attrs/$listeners
+    <pre>
+    如果父组件A下面有子组件B，组件B下面有组件C,这时如果组件A想传递数据给组件C,可以使用这种方法（多级组件）
+    </pre>
+
+    provide/inject
+    <pre>
+    父组件中通过provider来提供变量，然后在子组件中通过inject来注入变量。不论子组件有多深，只要调用了inject那么就可以注入provider中的数据。而不是局限于只能从当前父组件的prop属性来获取数据，只要在父组件的生命周期内，子组件都可以调用。
+    </pre>
+
+    Vuex                                                                 <br>
+
+    <pre>
+    常见使用场景可以分为三类：
+
+    父子通信：
+    父向子传递数据是通过 props,子向父是通过 events($emit)
+    通过父链 / 子链也可以通信($parent / $children),ref 也可以访问组件实例provide / inject 
+    API:$attrs / $listeners
+    
+    兄弟通信：
+    Bus,Vuex
+    
+    跨级通信：
+    Bus；Vuex
+    provide / inject 
+    API:$attrs / $listeners
+    </pre>
