@@ -588,3 +588,45 @@
     provide / inject 
     API:$attrs / $listeners
     </pre>
+
+3.  Vuex 的作用是什么?
+    Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
+
+4.  VueRouter 路由是什么？
+    <pre>
+    这里的路由就是SPA（单页应用）的路径管理器
+
+    vue-router是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用。vue的单页面应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。传统的页面应用，是用一些超链接来实现页面切换和跳转的。在vue-router单页面应用中，则是路径之间的切换，也就是组件的切换。路由模块的本质 就是建立起url和页面之间的映射关系。
+    </pre>
+
+5.  Vue 的双向绑定是如何实现的？有什么缺点？
+    <pre>
+    当你把一个普通的 JavaScript 对象传入 Vue 实例作为 data 选项，Vue 将遍历此对象所有的 property，并使用 Object.defineProperty 把这些 property 全部转为 getter/setter。
+    </pre>
+    <pre>
+    由于 JavaScript 的限制，Vue 不能检测数组和对象的变化。
+
+    对于对象
+    Vue 无法检测 property 的添加或移除。由于 Vue 会在初始化实例时对 property 执行 getter/setter 转化，所以 property 必须在 data 对象上存在才能让 Vue 将它转换为响应式的
+    Vue.set(object, propertyName, value)
+    </pre>
+    <pre>
+    对于数组
+
+    Vue 不能检测以下数组的变动：
+    当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
+    当你修改数组的长度时，例如：vm.items.length = newLength
+
+    为了解决第一类问题：
+    Vue.set(vm.items, indexOfItem, newValue)
+    为了解决第二类问题，你可以使用 splice：
+    vm.items.splice(newLength)
+    </pre>
+
+6.  computed 计算属性的用法？跟 methods 的区别。
+    <pre>
+    computed是响应式的，methods并非响应式。
+    · 调用方式不一样，computed定义的成员像属性一样访问，methods定义的成员必须以函数形式调用。
+    · computed是带缓存的，只有其引用的响应式属性发生改变时才会重新计算，而methods里的函数在每次调用时都要执行。
+    · computed中的成员可以只定义一个函数作为只读属性，也可以定义get/set变成可读写属性，这点是methods中的成员做不到的
+    </pre>
