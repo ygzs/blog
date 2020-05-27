@@ -671,3 +671,76 @@
     检查Referer字段
     </pre>
 
+二十三 webpack面试题
+
+1.	转译出的文件过大怎么办？
+    <pre>
+	使用 code split
+	写法 import('xxx').then(xxx=>{console.log(xxx)})
+    </pre>
+
+二十四 发散题
+
+1.	从输入 URL 到页面展现中间发生了什么？
+    <pre>
+    	DNS 查询 
+    	建立 TCP 连接（三次握手）
+    	发送 HTTP 请求（请求的四部分）
+    	后台处理请求
+    	    监听 80 端口
+    	    路由
+    	    渲染 HTML 模板
+    	    生成响应
+    	发送 HTTP 响应
+    	关闭 TCP 连接（四次挥手）
+    	解析 HTML
+    	下载 CSS js 图片 等
+    	解析 CSS js 图片 等
+    	渲染 DOM 树
+    	渲染样式树
+    	执行 JS
+    </pre>
+2.	你没有工作经历吗？
+    凭我的作品，我觉得我可以胜任贵司的工作。
+3.	你遇到过最难的问题是什么？
+    参考：https://www.zhihu.com/question/35323603/answer/338796153
+4.	你的期望薪资是多少？
+    你想要的工资 加 1000~2000。
+5.	（任何你不会的问题）
+    <pre>
+        承认不会
+        问详细细节：你问的是不是XXX方面的知识？请问你想问的是哪方面知识？
+        根据面试官的回答，向有利于自己的方向引导话题。
+    </pre>
+
+二十五 代码题
+
+1.	map加parseInt
+    ```javascript
+    [1,2,3].map(parseInt)
+	
+	parseInt(1,0, array) // 1
+	parseInt(2,1, array) // NaN
+	parseInt(3,2, array) // NaN
+
+    ```
+2.  
+    ```javascript
+    var a = {n:1}
+	var b = a
+	a.x = a = {n:2}
+
+    //a.x 是 undefined
+    ```
+3.	(a ==1 && a== 2 && a==3) 可能为 true 吗？
+    ```javascript
+    a = {
+	  value: 0,
+	  toString(){
+	    a.value += 1
+	    return a.value 
+	  }
+    }
+
+    // 可以
+    ```
