@@ -46,6 +46,13 @@
     块级：margin-left: auto; margin-right: auto;
 
     垂直居中： https://jscode.me/t/topic/1936
+    table自带功能
+    100% 高度的 afrer before 加上 inline-block
+    div 装成 table
+    margin-top -50%
+    translate -50%
+    absolute margin auto
+    flex
     </pre>
 
 4.	选择器优先级如何确定？
@@ -310,6 +317,7 @@
 
     function Human(name){
         Animal.apply(this,arguments)
+        // apply:方法能劫持另外一个对象的方法，继承另外一个对象的属性.
         this.name = name
     }
 
@@ -319,7 +327,7 @@
     Human.prototype = new fn()
 
     Human.prototype.useTools = function(){}
-     var xiaoming = new Human()
+    var xiaoming = new Human() //apply里的this就是xioaming,
     ```
     extends关键字
     ```javascript
