@@ -46,13 +46,17 @@
     块级：margin-left: auto; margin-right: auto;
 
     垂直居中： https://jscode.me/t/topic/1936
+    如果 parent 的 height 不写，你只需要 padding: 10px 0; 
+    就能将 child 垂直居中；
+    如果 parent 的 height 写死了，就很难把 .child 居中，以下是垂直居中的方法。
+    （忠告：能不写 height 就千万别写 height。）
     table自带功能
     100% 高度的 afrer before 加上 inline-block
     div 装成 table
     margin-top -50%
     translate -50%
-    absolute margin auto
-    flex
+    opsition: absolute; margin auto
+    display: flex
     </pre>
 
 4.	选择器优先级如何确定？
@@ -65,7 +69,7 @@
 5.	BFC 是什么？
     <pre>
     overflow:hidden 清除浮动。（推荐用 .clearfix 清除浮动）
-    overflow:hidden 取消父子 margin 合并。（推荐用 padding-top: 1px;）
+    overflow:hidden 取消父子 margin 合并。（推荐用 padding-top: 0.1px;）
     </pre>
 
 6.	如何清除浮动？
@@ -121,13 +125,13 @@
 
 4.	（必考）闭包是什么？
     ```javascript
-    function Adder (){
+    function Addition (){
         var n = 0
         return function(){
             n += 1
         }
     }
-    let  adder = Adder()
+    let  addition = Addition()
     adder() // n === 1
     adder() // n === 2
     console.log(n) // n is undefined
@@ -205,7 +209,7 @@
     function copy(obj){
         let newobj = null;      //声明一个变量用来储存拷贝之后的内容
 
-        if(typeof(obj) == 'object' && obj !== null){
+        if(typeof(obj) === 'object' && obj !== null){
             //判断数据类型是否是复杂类型，如果是则调用自己，再次循环，如果不是，直接赋值即可，
             //由于null不可以循环但类型又是object，所以这个需要对null进行判断
         
@@ -229,26 +233,17 @@
     计数排序的逻辑（只能正整数）
     ```javascript
     let a = [4,2,5,6,3,4,5]
-    let hash = {}
+    let hash = [] //{}
     for(let i=0;i<a.length;i++){
         if(a[i] in hash){
-            //
+            continue
         }else{
-            hashTab[ a[i] ] = true
+            hash.push(a[i])
+            //hash[ a[i] ] = ture
         }
     }
     //hash: {4: true, 2: true, 5: true, 6:true, 3: true}
-    console.log(Object.keys(hash))
-
-    function unique2(array){ 
-    var newArray = []
-    array.forEach((x,y)=>{
-    if(!(array[y] in newArray)) {
-    newArray.push(x)
-    }
-    })
-    return newArray
-    }
+    //console.log(Object.keys(hash))
 
     let mySet = new Set([1,5,2,3,4,2,3,1,3,4])
     function unique3() {
